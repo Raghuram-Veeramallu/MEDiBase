@@ -1,0 +1,31 @@
+<br>
+<br>
+<div style="padding-left: 30%">
+    <h1>
+        New User Registration
+    </h1>
+</div>
+
+<div class="row">
+    <div class="column" style="padding: 20%">
+        <p> Full Name </p>
+        <input type="text" hint="Full Name">
+        <p> Phone Number </p>
+        <input type="text" hint="phone" id="phone">
+        <p> Aadhar Number </p>
+        <input type="text" hint="aadhar" id="aadhar">
+        <br><br>
+        <button routerLink="../../home/dashboard" >Signup</button>
+    </div>
+    <div class="column" style="padding-top: 10%">
+        <div>
+            <video #video id="video" width="360" height="240" autoplay></video>
+        </div>
+        <br>
+        <br>
+        <div style="padding-left:18%"><button id="snap" (click)="capture()">Snap Photo</button></div>
+        <canvas #canvas id="canvas" width="360" height="240"></canvas>
+    </div>
+</div>
+
+

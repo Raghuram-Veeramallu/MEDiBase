@@ -1,0 +1,65 @@
+<header>
+
+    <div class="sidebar-fixed position-fixed">
+
+        <a class="logo-wrapper waves-effect">
+            <img src="../../../../assets/img/logo.jpeg" class="img-fluid" alt="">  
+        </a>
+
+        <div class="list-group list-group-flush">
+
+            <a routerLink="dashboard" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="chart-pie" class="mr-3"></mdb-icon>Dashboard</a>
+            <a routerLink="profile" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="user" class="mr-3"></mdb-icon>Profile</a>
+        </div>
+
+        <br><br><br>
+        <p>Year Wise Medical Records</p>
+
+        <div class="list-group list-group-flush" *ngFor="let year of years">
+            <a routerLink="records" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{year}}</a>
+        </div>
+
+    </div>
+    <!-- Sidebar -->
+
+    <!--Navbar-->
+    <mdb-navbar [containerInside]="false" SideClass="navbar navbar-expand-lg navbar-light white">
+
+        <!-- Navbar brand -->
+        <logo class="ml-3">
+            <a class="logo-wrapper waves-effect">
+                    <img src="../../../../assets/img/male_avatar.png" class="img-fluid" alt="" style="border-radius: 50%"> 
+            </a>
+        </logo>
+
+        <!-- Collapsible content -->
+        <links style="padding-left: 5%">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <h5> Raghuram </h5>
+                    <h5> Male </h5>
+                    <h5> 20 years </h5>
+                </li>
+            </ul>
+            <!-- Links -->
+
+            <!-- Search form -->
+            <ul class="navbar-nav nav-flex-icons">
+
+                    <li class="nav-item">
+                        <button (click) = "pdfGen()"> Download PDF </button>
+                    </li>
+                </ul>
+        </links>
+        <!-- Collapsible content -->
+
+    </mdb-navbar>
+    <!--/.Navbar-->
+
+</header>
+<!--Main Navigation-->

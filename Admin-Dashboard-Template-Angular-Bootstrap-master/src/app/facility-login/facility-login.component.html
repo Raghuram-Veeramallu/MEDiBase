@@ -1,13 +1,21 @@
-<main>
-    <div style="padding-top: 10%"> 
+<div class="container">
+  <main>
+    <style>
+      body{
+        background-image: url(/assets/img/front-page.jpg);
+      }</style>
+      <div [ngStyle]="{'background-image': 'url(/assets/img/front-page)'}"></div>
+    <div style="padding-top: 10%" >
+
         <h1> Welcome to Central Medical Records System </h1>
         <br>
         <br>
     </div>
 
-   <div class="container">
+   
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      
       <form>
         <div id="user-data">
           
@@ -24,7 +32,8 @@
       </form>
     </div>
   </div>
-</div>
+
 
 
 </main>
+</div>

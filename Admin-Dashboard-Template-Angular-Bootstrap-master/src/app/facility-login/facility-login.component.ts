@@ -21,6 +21,9 @@ export class FacilityLoginComponent {
     console.log("Going from facility to login");
     this.router.navigateByUrl('/login/olduser');
   }
+  newUser(){
+    this.router.navigateByUrl('/login/newuser');
+  }
   
   // onSubmit(form: NgForm) {
   //   console.log(form);

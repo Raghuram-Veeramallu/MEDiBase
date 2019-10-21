@@ -3,25 +3,23 @@
     <div style="padding-top: 2%">
         <h1> Existing patient Login </h1>
         <br>
-        <button routerLink="../newuser"> New Users </button>
+        
     </div>
 
     <div>
         <div>
             <video #video id="video" width="360" height="240" autoplay></video>
         </div>
-        <div><button id="snap" (click)="capture()">Snap Photo</button></div>
+        <div><button id="snap" (click)="capture()">Snap Photo</button>
+        <button style='margin-left: 10px;'*ngIf="show"routerLink="../../home/dashboard">Verify and Login</button></div>
         <br><br>
         <canvas #canvas id="canvas" width="360" height="240"></canvas>
     </div>
     <br><br>
-    <div>
-        <h6> Verify Details: </h6>
-        <h6 id="uidField"> {{uid}} </h6>
-    </div>
+    
     <br>
     <br>
-    <div><button routerLink="../../home/dashboard">Verify</button></div>
+    
     
 
     

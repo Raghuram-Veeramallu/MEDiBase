@@ -35,7 +35,7 @@ export class OlduserComponent implements OnInit {
   public image: any;
 
   private datad: any;
-
+show:boolean;
   uid: string;
   private userName: string;
 
@@ -62,6 +62,7 @@ export class OlduserComponent implements OnInit {
   }
 
   public capture() {
+    this.show=true;
     // this.router.navigateByUrl('/home/dashboard');
     this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 480, 360);
     this.image = this.canvas.nativeElement.toDataURL("image/png");
@@ -80,6 +81,7 @@ export class OlduserComponent implements OnInit {
       },
       "processData": false,
       "data": this.datad
+     
     }
 
     

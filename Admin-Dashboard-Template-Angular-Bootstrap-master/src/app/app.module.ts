@@ -1,7 +1,7 @@
 //import { AgmCoreModule } from '@agm/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA, APP_ID, APP_INITIALIZER } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes.service';
@@ -10,6 +10,9 @@ import { LoginModule } from './login/login.module';
 import { FacilityLoginComponent } from './facility-login/facility-login.component';
 import { HttpClientModule } from '@angular/common/http';
 //import { MaterializeModule } from 'angular2-materialize';
+
+
+import {IPFS, initIPFS} from './ipfs';
 
 
 @NgModule({
@@ -29,7 +32,12 @@ import { HttpClientModule } from '@angular/common/http';
     HomeModule,
     LoginModule,
   ],
-  providers: [],
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: initIPFS,
+    multi: true,
+    deps: [IPFS]
+  }],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

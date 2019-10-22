@@ -19,12 +19,13 @@
     </div>
     <div class="column" style="padding-top: 10%">
         <div>
-            <video #video id="video" width="360" height="240" autoplay></video>
+            <video #video id="video" [hidden]="isShow" width="360" height="240" autoplay></video>
         </div>
-        <br>
-        <br>
-        <div style="padding-left:18%"><button id="snap" (click)="capture()">Snap Photo</button></div>
-        <canvas #canvas id="canvas" width="360" height="240"></canvas>
+       
+        <div style="padding-left:18%"><button id="snap" [hidden]="isShow" style="margin-top: 20px;"(click)="capture()">Snap Photo</button>
+            <button id="try" [hidden]="!isShow" style="margin-top: 20px;"(click)="try()">Capture Again</button>
+        </div>
+        <canvas #canvas id="canvas" style="margin-top: 20px;" width="360" height="240"></canvas>
     </div>
 </div>
 

@@ -1,19 +1,21 @@
 
 <main>
     <div style="padding-top: 2%">
-        <h1> Existing patient Login </h1>
+        <h1> Facial Lock </h1>
+        <button class="btn btn-primary" style ='margin-left: 700px;'type="submit" (click)="newUser()">Register a new patient </button>
         <br>
         
     </div>
-
+    
     <div>
         <div>
-            <video #video id="video" width="360" height="240" autoplay></video>
+            <video #video id="video" style="margin-top: 50px" width="360" height="240" autoplay></video>
+            <canvas #canvas id="canvas" style="margin-left: 100px; " width="360" height="240"></canvas>
         </div>
-        <div><button id="snap" (click)="capture()">Snap Photo</button>
-        <button style='margin-left: 10px;'*ngIf="show"routerLink="../../home/dashboard">Verify and Login</button></div>
+        <div><button class="btn btn-primary"#marg id="snap"style='margin-left: 130px;' (click)="capture()">Snap Photo</button>
+        <button class="btn btn-primary" style='margin-left: 320px;'*ngIf="show"routerLink="../../home/dashboard">Verify and Login</button></div>
         <br><br>
-        <canvas #canvas id="canvas" width="360" height="240"></canvas>
+        
     </div>
     <br><br>
     

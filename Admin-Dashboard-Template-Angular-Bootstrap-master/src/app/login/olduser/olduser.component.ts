@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 //import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
+import { Router } from '@angular/router';
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
 //import { toast } from 'angular2-materialize';
 //import { ToastrService } from 'ngx-toastr';
@@ -38,6 +39,7 @@ export class OlduserComponent implements OnInit {
 show:boolean;
   uid: string;
   private userName: string;
+  private router: Router;
 
   constructor(
     private userService: UserService,
@@ -50,8 +52,10 @@ show:boolean;
   ngOnInit(){
 
   }
+  newUser(){
+    this.router.navigateByUrl('../../login/newuser');
+  }
   
-
   public ngAfterViewInit() {
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
@@ -159,7 +163,8 @@ show:boolean;
     return -1;
   }
 
-
+  
+  
 
   getUserDetails(uid: any){
     this.userName = this.userService.getUserName(uid);

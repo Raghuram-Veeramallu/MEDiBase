@@ -23,7 +23,7 @@ export class NewuserComponent implements OnInit {
   public image: any;
 
   private datad: string;
-
+isShow=false;
   constructor(
     private userService: UserService
     //private http: HttpClient
@@ -41,9 +41,14 @@ export class NewuserComponent implements OnInit {
         });
     }
   }
-
+   public try()
+   {
+    this.isShow=!this.isShow; 
+   }
   public capture() {
     //console.log(uidT);
+  //check
+    this.isShow=!this.isShow;
     var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
     console.log(uid);
     //uid = "270724743647";

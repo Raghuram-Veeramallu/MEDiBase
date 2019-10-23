@@ -7,25 +7,33 @@
 </div>
 
 <div class="row">
-    <div class="column" style="padding: 20%">
-        <p> Full Name </p>
-        <input type="text" hint="Full Name">
-        <p> Phone Number </p>
-        <input type="text" hint="phone" id="phone">
-        <p> Aadhar Number </p>
-        <input type="text" hint="aadhar" id="aadhar">
+
+        <div class="column" style="padding: 7.5%" >
+            <form>
+        <label> Full Name </label>
+        <input type="text" ng-maxlength="10" hint="Full Name"  class="form-control">
+        <label> Phone Number </label>
+        <input type="text" hint="phone" id="phone" maxlength="10" minlength="10" class="form-control">
+        
+        <label> Aadhar Number </label>
+        <input type="text" hint="aadhar" id="aadhar" maxlength="16" minlength="16" class="form-control">
         <br><br>
         <button routerLink="../../home/dashboard" >Signup</button>
+    </form>
     </div>
-    <div class="column" style="padding-top: 10%">
+
+    <div class="column" style="padding-top: 7%;" >
         <div>
             <video #video id="video" [hidden]="isShow" width="360" height="240" autoplay></video>
         </div>
        
         <div style="padding-left:18%"><button id="snap" [hidden]="isShow" style="margin-top: 20px;"(click)="capture()">Snap Photo</button>
-            <button id="try" [hidden]="!isShow" style="margin-top: 20px;"(click)="try()">Capture Again</button>
+          
         </div>
         <canvas #canvas id="canvas" style="margin-top: 20px;" width="360" height="240"></canvas>
+     <div>
+        <button id="try" [hidden]="!isShow" style="margin-top: 20px;"(click)="try()">Capture Again</button>
+     </div>
     </div>
 </div>
 

@@ -68,7 +68,7 @@ show:boolean;
   public capture() {
     this.show=true;
     // this.router.navigateByUrl('/home/dashboard');
-    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 480, 360);
+    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 360, 240);
     this.image = this.canvas.nativeElement.toDataURL("image/png");
 
     this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"ge\"\r\n}"

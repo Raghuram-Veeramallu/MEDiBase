@@ -52,7 +52,7 @@ isShow=false;
     var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
     console.log(uid);
     //uid = "270724743647";
-    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 480, 360);
+    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0,360, 240);
     this.image = this.canvas.nativeElement.toDataURL("image/png");
     this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + uid + "\",\r\n    \"gallery_name\":\"ge\"\r\n}";
     const settings = {

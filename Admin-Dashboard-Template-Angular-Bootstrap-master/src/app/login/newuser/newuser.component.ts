@@ -38,8 +38,10 @@ isShow=false;
         navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
             this.video.nativeElement.srcObject = stream;
             this.video.nativeElement.play();
+
         });
-    }
+    
+      }
   }
    public try()
    {

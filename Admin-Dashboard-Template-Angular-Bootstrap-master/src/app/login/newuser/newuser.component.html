@@ -30,7 +30,8 @@
         <div style="padding-left:18%"><button id="snap" [hidden]="isShow" style="margin-top: 20px;"(click)="capture()">Snap Photo</button>
           
         </div>
-        <canvas #canvas id="canvas" style="margin-top: 20px;" width="360" height="240"></canvas>
+        <canvas
+                 #canvas id="canvas"   style="margin-top: 20px;" width="360" height="240"></canvas>
      <div>
         <button id="try" [hidden]="!isShow" style="margin-top: 20px;"(click)="try()">Capture Again</button>
      </div>

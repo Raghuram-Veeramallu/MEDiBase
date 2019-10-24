@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 //import { map } from 'rxjs/operators';
 import * as $ from 'jquery';
 import { User } from 'src/app/shared/models/user';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 
 
@@ -21,19 +22,21 @@ export class NewuserComponent implements OnInit {
   public canvas: ElementRef;
 
   public image: any;
-
+private router:Router;
   private datad: string;
 isShow=false;
+
   constructor(
     private userService: UserService
     //private http: HttpClient
   ) { 
   }
   ngOnInit(){
-
+  //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);
   }
 
   public ngAfterViewInit() {
+    
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
             this.video.nativeElement.srcObject = stream;
@@ -42,10 +45,15 @@ isShow=false;
         });
     
       }
+      
   }
    public try()
    {
     this.isShow=!this.isShow; 
+   }
+   public leave(){
+    this.router.navigateByUrl('../../home/dashboard');
+    //routerLink="../../home/dashboard"
    }
   public capture() {
     //console.log(uidT);
@@ -53,6 +61,7 @@ isShow=false;
     this.isShow=!this.isShow;
     var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
     console.log(uid);
+    
     //uid = "270724743647";
     this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0,360, 240);
     this.image = this.canvas.nativeElement.toDataURL("image/png");
@@ -80,7 +89,7 @@ isShow=false;
           console.log("failure");
       }
     });
-    this.addUser(uid,"Raghuram","9205260085");
+    this.addUser(uid,"Akhilesh","9550869969");
 
   }
 

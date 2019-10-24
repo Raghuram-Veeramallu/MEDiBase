@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Profile1Component implements OnInit {
 
-  name = "Raghuram Veeramallu";
-  age = "20";
+  name = "Akhilesh Pothuri";
+  age = "21";
   gender = "Male";
-  phone = "9205260085";
+  phone = "9550869969";
 
   imagesBasic = [
     {

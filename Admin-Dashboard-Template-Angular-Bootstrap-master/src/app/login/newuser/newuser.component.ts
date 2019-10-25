@@ -52,12 +52,13 @@ isShow=false;
     this.isShow=!this.isShow; 
    }
    public leave(){
-    this.router.navigateByUrl('../../home/dashboard');
+    this.router.navigateByUrl('http://localhost:4200/home/dashboard');
     //routerLink="../../home/dashboard"
    }
   public capture() {
     //console.log(uidT);
   //check
+  
     this.isShow=!this.isShow;
     var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
     console.log(uid);

@@ -1,8 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
-body {
-  background-image: url('../../Admin-Dashboard-Template-Angular-Bootstrap-master/src/assets/img/first-page.jpg');
-}
+ body {
+
+   background-image: url('../../Admin-Dashboard-Template-Angular-Bootstrap-master/src/assets/img/first-page.jpg');
+ }
+
 
 .card.card-cascade .view.gradient-card-header {
   padding: 1rem 1rem;
@@ -11,9 +13,7 @@ body {
 
 .card.card-cascade h3,
 .card.card-cascade h4,
-{
-  margin-bottom: 0px;
-}
+
 
 .blue-gradient {
   background: -webkit-linear-gradient(50deg, #45cafc, #303f9f);

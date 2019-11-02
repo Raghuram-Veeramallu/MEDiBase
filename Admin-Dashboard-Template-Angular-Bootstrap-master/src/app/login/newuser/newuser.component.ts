@@ -22,9 +22,9 @@ export class NewuserComponent implements OnInit {
   public canvas: ElementRef;
 
   public image: any;
-private router:Router;
+  private router:Router;
   private datad: string;
-isShow=false;
+  isShow=false;
 
   constructor(
     private userService: UserService

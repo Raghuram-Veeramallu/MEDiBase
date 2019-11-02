@@ -48,10 +48,10 @@ export class UserService {
   }
 
 
-  getUserById(key: string){
-    var temp =  this.db.object('users/' + key);
-    console.log(temp);
-    return temp;
-  }
+  // getUserById(key: string){
+  //   var temp =  this.db.object('users/' + key);
+  //   console.log(temp);
+  //   return temp;
+  // }
 
 }

@@ -19,9 +19,11 @@ export class NavigationComponent implements OnInit {
   years = ['1999', '2004', '2019'];
   clicked: boolean;
   resizedImage: Blob;
-
+  
   // TODO: Need to fix the click effect of years
-
+   
+  
+  
 
   
   constructor(
@@ -33,7 +35,7 @@ export class NavigationComponent implements OnInit {
     //this.user = new User();
     //this.insertImage();
   }
-  
+ 
   ngOnInit() {
     // const x = this.userService.getUserById("Lp9aqaY9Xwk8zJr4FyT");
     // x.snapshotChanges().subscribe(
@@ -52,6 +54,7 @@ export class NavigationComponent implements OnInit {
 
   setClicked(val: boolean): void {
     this.clicked = val;
+    
   }
 
   navigateToPage(page: string){

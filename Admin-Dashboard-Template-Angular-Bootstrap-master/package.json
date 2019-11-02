@@ -31,6 +31,7 @@
     "chart.js": "^2.9.1",
     "core-js": "^2.6.10",
     "firebase": "^6.6.2",
+    "ipfs": "^0.39.0",
     "jquery": "^2.2.4",
     "materialize-css": "^1.0.0",
     "ng2-img-max": "^2.1.18",

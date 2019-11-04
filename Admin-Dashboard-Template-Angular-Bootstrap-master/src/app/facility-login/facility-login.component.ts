@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: './facility-login.component.html',
@@ -9,8 +10,9 @@ import { Router } from '@angular/router';
 export class FacilityLoginComponent {
   @ViewChild('f', { static: false }) signupForm: NgForm;
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+  ) {
+  }
   user = {
   
     email: '',

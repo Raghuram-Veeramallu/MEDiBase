@@ -11,6 +11,7 @@ import { FacilityLoginComponent } from './facility-login/facility-login.componen
 import { HttpClientModule } from '@angular/common/http';
 //import { MaterializeModule } from 'angular2-materialize';
 import{FireBaseConfig} from '../environments/firebaseConfig'
+//import { IPFS, initIPFS } from './ipfs';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,12 @@ import{FireBaseConfig} from '../environments/firebaseConfig'
   ],
   
   
-  providers: [],
+  providers: [//{
+    // provide: APP_INITIALIZER,
+    // useFactory: initIPFS,
+    // multi: true,
+    // deps: [IPFS]
+  ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

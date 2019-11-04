@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RecordsService } from '../shared/services/records.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ export class FacilityLoginComponent {
   @ViewChild('f', { static: false }) signupForm: NgForm;
   constructor(
     private router: Router,
+    private records: RecordsService
   ) {
+    this.records.run();
   }
   user = {
   

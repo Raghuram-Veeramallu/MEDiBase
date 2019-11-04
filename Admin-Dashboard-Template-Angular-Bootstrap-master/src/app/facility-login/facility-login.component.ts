@@ -2,12 +2,15 @@ import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './facility-login.component.html',
   styleUrls: ['./facility-login.component.scss']
 })
 export class FacilityLoginComponent {
+  
   @ViewChild('f', { static: false }) signupForm: NgForm;
   constructor(
     private router: Router,

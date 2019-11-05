@@ -23,14 +23,14 @@ export class FacilityLoginComponent {
     facilityId: '',
     facilityPasskey: ''
   };
-  submitted = false;
+  
 
   instituteLogin(instForm: NgForm){
     console.log("Going from facility to login");
-    //DONE:   instForm.value['facilityID']
-    // instForm.value['facilityPasskry']
-    console.log(instForm.value['facilityId'].toString());
-    this.router.navigateByUrl('/login/olduser');
+    
+    console.log(instForm.value);
+   if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")
+    {this.router.navigateByUrl('/login/olduser');}
   }
   newUser(){
     this.router.navigateByUrl('/login/newuser');

@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { FacilityLoginComponent } from './facility-login/facility-login.component';
 import { HttpClientModule } from '@angular/common/http';
 //import { MaterializeModule } from 'angular2-materialize';
+import { FormsModule }   from '@angular/forms';
 import{FireBaseConfig} from '../environments/firebaseConfig'
 //import { IPFS, initIPFS } from './ipfs';
 
@@ -24,7 +25,7 @@ import{FireBaseConfig} from '../environments/firebaseConfig'
     // }),
     //MaterializeModule,
     BrowserModule,
-    
+    FormsModule,
     AngularFireModule.initializeApp(FireBaseConfig),
     BrowserAnimationsModule,
     HttpClientModule,

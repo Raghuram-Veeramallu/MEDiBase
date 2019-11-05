@@ -15,19 +15,19 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       
-      <form>
+      <form #instituteForm="ngForm" (ngSubmit)="instituteLogin(instituteForm)">
         <div id="user-data">
           
           <div class="form-group">
             <label for="email">Facility ID</label>
-            <input type="email" id="email"  class="form-control">
+            <input type="email" id="email" name="facilityId" class="form-control" [(ngModel)]="institute.facilityId">
             <span class="help-block" *ngIf="!email.valid && email.touched">Please enter a valid email!</span>
             <label for="password">Passkey</label>
-            <input type="password" id="password" class="form-control">
+            <input type="password" id="password" name="facilityPasskey" class="form-control" [(ngModel)]="institute.facilityPasskey">
           </div>
         </div>
         
-        <button class="btn btn-primary" type="submit" (click)="verifyCred()">Login</button>
+        <button class="btn btn-primary" type="submit">Login</button>
      
       </form>
     </div>

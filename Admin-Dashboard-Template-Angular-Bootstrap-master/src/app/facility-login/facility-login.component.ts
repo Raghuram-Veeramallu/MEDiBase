@@ -14,10 +14,11 @@ import { Router } from '@angular/router';
 export class FacilityLoginComponent {
   
   @ViewChild('f', { static: false }) signupForm: NgForm;
+  error: boolean=false;
   constructor(
    // private toastService: ToastrService,
     private router: Router,
-    
+  
     //private records: RecordsService
   ) {
     //this.records.run();
@@ -34,8 +35,10 @@ export class FacilityLoginComponent {
     console.log(instForm.value);
    if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")
     {this.router.navigateByUrl('/login/olduser');}
-    
+    else
+    this.error=true;
   }
+  
   newUser(){
     this.router.navigateByUrl('/login/newuser');
   }

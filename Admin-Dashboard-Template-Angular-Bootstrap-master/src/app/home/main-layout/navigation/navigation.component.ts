@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import{ AngularFireList, AngularFireDatabase} from 'angularfire2/database';
+import{ AngularFireDatabase} from 'angularfire2/database';
 import { Observable } from 'rxjs';
 
 //import { User } from 'src/app/shared/models/user';

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-//import { ToastrService } from "ngx-toastr";
+import { ToastrService } from "../../app/shared/services/toastr.service";
 //import { RecordsService } from '../shared/services/records.service';
 
 
@@ -18,7 +18,7 @@ export class FacilityLoginComponent {
   constructor(
    // private toastService: ToastrService,
     private router: Router,
-  
+    private toastrService: ToastrService
     //private records: RecordsService
   ) {
     //this.records.run();
@@ -36,7 +36,9 @@ export class FacilityLoginComponent {
    if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")
     {this.router.navigateByUrl('/login/olduser');}
     else
-    this.error=true;
+    {this.error=true;
+    this.toastrService.error("Invalid Credentials","Please check your email and password");
+    }
   }
   
   newUser(){

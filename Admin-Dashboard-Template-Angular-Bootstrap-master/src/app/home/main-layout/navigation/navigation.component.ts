@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import{ AngularFireList, AngularFireDatabase} from 'angularfire2/database';
+import { Observable } from 'rxjs';
 
 //import { User } from 'src/app/shared/models/user';
 //import { UserService } from 'src/app/shared/services/user.service';
@@ -21,8 +22,8 @@ export class NavigationComponent implements OnInit {
   //years = ['1999', '2004', '2019'];
   clicked: boolean;
   resizedImage: Blob;
-  
-  years:AngularFireList<any[]>;
+  name:string;
+  years:Observable<any[]>;
   // TODO: Need to fix the click effect of years
    
   
@@ -36,7 +37,9 @@ export class NavigationComponent implements OnInit {
     //private ng2ImgMax: Ng2ImgMaxService
   ) {
     this.clicked = this.clicked === undefined ? false : true;
-    this.years=af.list('/years/Akhilesh');
+    this.name="Akhilesh";
+    this.years=af.list('/years/'+this.name).snapshotChanges();
+    console.log(this.years);
 //this.years=['199'];
     //this.user = new User();
     //this.insertImage();

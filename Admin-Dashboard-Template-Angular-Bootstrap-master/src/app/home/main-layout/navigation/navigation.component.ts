@@ -65,7 +65,7 @@ export class NavigationComponent implements OnInit {
     this.clicked = val;
     
   }
-
+  
   navigateToPage(page: string){
     switch(page){
         case 'dashboard':{

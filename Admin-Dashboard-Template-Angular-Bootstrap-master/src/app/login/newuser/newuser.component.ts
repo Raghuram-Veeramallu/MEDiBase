@@ -31,10 +31,11 @@ export class NewuserComponent implements OnInit {
     //private http: HttpClient
   ) { 
   }
+ 
   ngOnInit(){
   //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);
   }
-
+ 
   public ngAfterViewInit() {
     
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {

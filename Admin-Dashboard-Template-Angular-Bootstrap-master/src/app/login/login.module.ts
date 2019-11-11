@@ -8,8 +8,8 @@ import { ViewsModule } from '../home/views/views.module';
 import { OlduserComponent } from './olduser/olduser.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { ToastrModule } from 'ngx-toastr';
-
-
+import{FormsModule} from '@angular/forms'
+ 
 @NgModule({
   declarations: [
     LoginComponent,
@@ -17,6 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
     NewuserComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     LoginRoutingModule,
     ViewsModule,

@@ -7,6 +7,7 @@ import { User } from 'src/app/shared/models/user';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-newuser',
@@ -17,7 +18,7 @@ export class NewuserComponent implements OnInit {
 
   @ViewChild("video", {static: false})
     public video: ElementRef;
-
+    @ViewChild('f', { static: false }) signupForm: NgForm;
   @ViewChild("canvas", {static: false})
   public canvas: ElementRef;
 
@@ -26,15 +27,31 @@ export class NewuserComponent implements OnInit {
   private datad: string;
   isShow=false;
 
+
+
+
   constructor(
     private userService: UserService
     //private http: HttpClient
   ) { 
   }
+  institutes = {
+    patient: '',
+    phoneno: '',
+    aadhar:''
+  };
+  instituteLogins(instaForm: NgForm){
+    console.log("Entered new patient");
+    
+    console.log(instaForm.value);
+    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar']);
+    
+  }
+  
   ngOnInit(){
   //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);
   }
-
+ 
   public ngAfterViewInit() {
     
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -47,6 +64,7 @@ export class NewuserComponent implements OnInit {
       }
       
   }
+  
    public try()
    {
     this.isShow=!this.isShow; 
@@ -61,8 +79,6 @@ export class NewuserComponent implements OnInit {
   
     this.isShow=!this.isShow;
     var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
-    console.log(uid);
-    
     //uid = "270724743647";
     this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0,360, 240);
     this.image = this.canvas.nativeElement.toDataURL("image/png");
@@ -90,7 +106,7 @@ export class NewuserComponent implements OnInit {
           console.log("failure");
       }
     });
-    this.addUser(uid,"Akhilesh","9550869969");
+    
 
   }
 

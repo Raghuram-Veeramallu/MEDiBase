@@ -9,17 +9,19 @@
 <div class="row">
 
         <div class="column" style="padding: 7.5%" >
-            <form>
+            <form #institutesForm="ngForm" (ngSubmit)="instituteLogins(institutesForm)">
+                    <div class="form-group">
         <label> Full Name </label>
-        <input type="text" ng-maxlength="10" hint="Full Name"  class="form-control">
+        <input type="text" ng-maxlength="10" hint="Full Name"  name="patient" id="name"  class="form-control" [(ngModel)]="institutes.patient">
         <label> Phone Number </label>
-        <input type="text" hint="phone" id="phone" maxlength="10" minlength="10" class="form-control">
+        <input type="number" hint="phone" name="phoneno" id="phone" maxlength="10" minlength="10"  class="form-control"[(ngModel)]="institutes.phoneno">
         
         <label> Aadhar Number </label>
-        <input type="text" hint="aadhar" id="aadhar" maxlength="16" minlength="16" class="form-control">
+        <input type="number" hint="aadhar" id="aadhar" name="aadhar" maxlength="16"  minlength="16" class="form-control"[(ngModel)]="institutes.aadhar">
         <br><br>
-        <button id="signup" class="btn btn-primary" routerLink="../../home/dashboard">Signup</button>
-    </form>
+        
+                    </div>
+                    <button id="signup" class="btn btn-primary" type="submit" >Signup</button> </form>
     </div>
 
     <div class="column" style="padding-top: 7%;" >

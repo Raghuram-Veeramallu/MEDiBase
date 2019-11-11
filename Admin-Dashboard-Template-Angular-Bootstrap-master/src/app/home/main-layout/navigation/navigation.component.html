@@ -17,10 +17,10 @@
         <br><br><br>
         <p>Year Wise Medical Records</p>
 
-        <div class="list-group " *ngFor="let year of years">
+        <div class="list-group "  *ngFor="let year of years | async">
               
-            <a routerLink="records"  routerLinkActive="active" class="list-group-item ">
-                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{year}}</a>
+            <a routerLink="records"  routerLinkActive="active" >
+                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{year.key}}</a>
                 
         </div>
 

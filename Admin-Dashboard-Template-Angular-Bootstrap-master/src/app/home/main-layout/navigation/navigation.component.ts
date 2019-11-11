@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
+import{ AngularFireDatabase} from 'angularfire2/database';
+import { Observable } from 'rxjs';
+
 //import { User } from 'src/app/shared/models/user';
 //import { UserService } from 'src/app/shared/services/user.service';
 //import { AngularFireObject } from 'angularfire2/database';
@@ -16,22 +19,28 @@ import { Router } from '@angular/router';
 export class NavigationComponent implements OnInit {
   @ViewChild('sidenav', {static: true}) sidenav: ElementRef;
 
-  years = ['1999', '2004', '2019'];
+  //years = ['1999', '2004', '2019'];
   clicked: boolean;
   resizedImage: Blob;
-  
+  name:string;
+  years:Observable<any[]>;
   // TODO: Need to fix the click effect of years
    
   
   
 
   
-  constructor(
+  constructor(af:AngularFireDatabase,
     private router: Router,
+    
     //private userService: UserService
     //private ng2ImgMax: Ng2ImgMaxService
   ) {
     this.clicked = this.clicked === undefined ? false : true;
+    this.name="Akhilesh";
+    this.years=af.list('/years/'+this.name).snapshotChanges();
+    console.log(this.years);
+//this.years=['199'];
     //this.user = new User();
     //this.insertImage();
   }
@@ -56,7 +65,7 @@ export class NavigationComponent implements OnInit {
     this.clicked = val;
     
   }
-
+ 
   navigateToPage(page: string){
     switch(page){
         case 'dashboard':{

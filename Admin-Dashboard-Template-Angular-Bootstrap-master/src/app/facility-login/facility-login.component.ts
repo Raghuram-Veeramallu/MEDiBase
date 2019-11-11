@@ -1,7 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from "../../app/shared/services/toastr.service";
 //import { RecordsService } from '../shared/services/records.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -9,9 +12,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./facility-login.component.scss']
 })
 export class FacilityLoginComponent {
+  
   @ViewChild('f', { static: false }) signupForm: NgForm;
+  error: boolean=false;
   constructor(
+   // private toastService: ToastrService,
     private router: Router,
+    private toastrService: ToastrService
     //private records: RecordsService
   ) {
     //this.records.run();
@@ -20,15 +27,20 @@ export class FacilityLoginComponent {
     facilityId: '',
     facilityPasskey: ''
   };
-  submitted = false;
+  
 
   instituteLogin(instForm: NgForm){
     console.log("Going from facility to login");
-    //DONE:   instForm.value['facilityID']
-    // instForm.value['facilityPasskry']
-    console.log(instForm.value['facilityId'].toString());
-    this.router.navigateByUrl('/login/olduser');
+    
+    console.log(instForm.value);
+   if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")
+    {this.router.navigateByUrl('/login/olduser');}
+    else
+    {this.error=true;
+    this.toastrService.error("Invalid Credentials","Please check your email and password");
+    }
   }
+  
   newUser(){
     this.router.navigateByUrl('/login/newuser');
   }

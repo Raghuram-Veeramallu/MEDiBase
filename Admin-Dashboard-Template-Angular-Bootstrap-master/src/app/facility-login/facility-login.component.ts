@@ -34,9 +34,10 @@ export class FacilityLoginComponent {
   instituteLogin(instForm: NgForm){
     console.log("Going from facility to login");
     
-    console.log(instForm.value);
-    const verify=this.verifyuser(instForm.value['facilityId']);
-    if(verify==instForm.value['facilityPasskey'])
+    
+    console.log(instForm.value['facilityPasskey']);
+    console.log(this.verifyuser(instForm.value['facilityId']));
+    if(this.verifyuser(instForm.value['facilityId'])==instForm.value['facilityPasskey'])
    //if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")
     {this.router.navigateByUrl('/login/olduser');}
     else

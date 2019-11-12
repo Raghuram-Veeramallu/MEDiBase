@@ -31,10 +31,16 @@ userpassword:string;
     console.log(email);
     this.db.database.ref('/facility').orderByChild('email').equalTo(email).once('value', (snapshot) => {
       //console.log(snapshot.val());
-      if(snapshot.val())
-     { this.userpassword = snapshot.val().password;
-      return this.userpassword;}
-    })
+      snapshot.forEach(childSnapshot => {
+        var childData = childSnapshot.val();
+        var password = childData.password;
+    return password;
+    });
+    });
+     // if(snapshot.val())
+     //{ this.userpassword = snapshot.val().password;
+      //return this.userpassword;}
+    //})
    
   
   }

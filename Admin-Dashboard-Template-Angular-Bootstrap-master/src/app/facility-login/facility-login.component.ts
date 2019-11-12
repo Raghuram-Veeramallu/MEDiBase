@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from "../../app/shared/services/toastr.service";
 //import { RecordsService } from '../shared/services/records.service';
 
-
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,9 @@ export class FacilityLoginComponent {
   constructor(
    // private toastService: ToastrService,
     private router: Router,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userService: UserService,
+   
     //private records: RecordsService
   ) {
     //this.records.run();
@@ -33,7 +35,9 @@ export class FacilityLoginComponent {
     console.log("Going from facility to login");
     
     console.log(instForm.value);
-   if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")
+    const verify=this.verifyuser(instForm.value['facilityId']);
+    if(verify==instForm.value['facilityPasskey'])
+   //if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")
     {this.router.navigateByUrl('/login/olduser');}
     else
     {this.error=true;
@@ -43,6 +47,11 @@ export class FacilityLoginComponent {
   
   newUser(){
     this.router.navigateByUrl('/login/newuser');
+  }
+  verifyuser(email: string){
+  
+    
+    this.userService.getPassword(email);
   }
   
   // onSubmit(form: NgForm) {

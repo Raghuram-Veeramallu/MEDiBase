@@ -9,7 +9,7 @@ export class UserService {
   users: AngularFireList<User>;
   selectedUser: User = new User();
   userName: string;
-
+userpassword:string;
   constructor(private db: AngularFireDatabase) {
     this.getUsers();
   }
@@ -26,24 +26,25 @@ export class UserService {
   updateUser(user: User) {
     this.users.update(user.$key, user);
   }
-
+  getPassword(email:string)
+  {
+    console.log(email);
+    this.db.database.ref('/facility').orderByChild('email').equalTo(email).once('value', (snapshot) => {
+      //console.log(snapshot.val());
+      if(snapshot.val())
+     { this.userpassword = snapshot.val().password;
+      return this.userpassword;}
+    })
+   
+  
+  }
   getUserName(uid: string){
-    // x.snapshotChanges().subscribe(
-		// 	(product) => {
-		// 		// this.spinnerService.hide();
-		// 		const y = product.payload.toJSON() as Product;
 
-		// 		y['$key'] = id;
-		// 		this.product = y;
-		// 	},
-		// 	(error) => {
-		// 		this.toastrService.error('Error while fetching Product Detail', error);
-		// 	}
-		// );
     this.db.database.ref('/users').orderByChild('uid').equalTo(uid).once('value', (snapshot) => {
       console.log(snapshot.val().name);
       this.userName = snapshot.val().name;
     })
+  //  console.log(this.userName);
     return this.userName;
   }
 

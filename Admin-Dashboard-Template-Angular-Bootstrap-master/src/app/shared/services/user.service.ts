@@ -10,6 +10,7 @@ export class UserService {
   selectedUser: User = new User();
   userName: string;
 userpassword:string;
+passwords:string;
   constructor(private db: AngularFireDatabase) {
     this.getUsers();
   }
@@ -29,20 +30,23 @@ userpassword:string;
   getPassword(email:string)
   {
     console.log(email);
-    this.db.database.ref('/facility').orderByChild('email').equalTo(email).once('value', (snapshot) => {
-      //console.log(snapshot.val());
-      snapshot.forEach(childSnapshot => {
-        var childData = childSnapshot.val();
-        var password = childData.password;
-    return password;
-    });
-    });
+    this.db.database.ref('/facility').orderByChild('email').equalTo(email)
+  .once('value')
+  .then(dataSnapshot => {
+    if(dataSnapshot.val()) {
+       var dataObj = dataSnapshot.val();
+       var password = dataObj[Object.keys(dataObj)[0]].password;
+       console.log(password);
+       this.passwords=password;
+       return this.passwords;
+    }
+  });
+
      // if(snapshot.val())
      //{ this.userpassword = snapshot.val().password;
       //return this.userpassword;}
     //})
-   
-  
+
   }
   getUserName(uid: string){
 

@@ -9,7 +9,8 @@ export class UserService {
   users: AngularFireList<User>;
   selectedUser: User = new User();
   userName: string;
-
+userpassword:string;
+passwords:string;
   constructor(private db: AngularFireDatabase) {
     this.getUsers();
   }
@@ -26,24 +27,34 @@ export class UserService {
   updateUser(user: User) {
     this.users.update(user.$key, user);
   }
+  getPassword(email:string)
+  {
+    console.log(email);
+    this.db.database.ref('/facility').orderByChild('email').equalTo(email)
+  .once('value')
+  .then(dataSnapshot => {
+    if(dataSnapshot.val()) {
+       var dataObj = dataSnapshot.val();
+       var password = dataObj[Object.keys(dataObj)[0]].password;
+       console.log(password);
+       this.passwords=password;
+       return this.passwords;
+    }
+  });
 
+     // if(snapshot.val())
+     //{ this.userpassword = snapshot.val().password;
+      //return this.userpassword;}
+    //})
+
+  }
   getUserName(uid: string){
-    // x.snapshotChanges().subscribe(
-		// 	(product) => {
-		// 		// this.spinnerService.hide();
-		// 		const y = product.payload.toJSON() as Product;
 
-		// 		y['$key'] = id;
-		// 		this.product = y;
-		// 	},
-		// 	(error) => {
-		// 		this.toastrService.error('Error while fetching Product Detail', error);
-		// 	}
-		// );
     this.db.database.ref('/users').orderByChild('uid').equalTo(uid).once('value', (snapshot) => {
       console.log(snapshot.val().name);
       this.userName = snapshot.val().name;
     })
+  //  console.log(this.userName);
     return this.userName;
   }
 

@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend for MediBase application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Raghuram",
+  "license": "ISC",
+  "dependencies": {
+    "couchbase": "^2.6.9",
+    "express": "^4.17.1"
+  }
+}

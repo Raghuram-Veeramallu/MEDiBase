@@ -29,6 +29,7 @@
     "angularfire2": "^5.2.1",
     "async": "^3.1.0",
     "blueimp-canvas-to-blob": "^3.16.0",
+    "bootstrap": "^4.3.1",
     "cassandra-driver": "^4.3.0",
     "chart.js": "^2.9.1",
     "core-js": "^2.6.10",
@@ -38,9 +39,9 @@
     "materialize-css": "^1.0.0",
     "ng2-img-max": "^2.1.18",
     "ngx-toastr": "^10.2.0",
-    "toastr": "^2.1.4",
     "orbit-db": "^0.22.0",
     "rxjs": "~6.5.2",
+    "toastr": "^2.1.4",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

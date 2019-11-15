@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Map1Component } from './views/maps/map1/map1.component';
 import { RecordsComponent } from './views/records/records.component';
+import{newRecordsComponent} from './views/newrecord/newrecord.component'
 import { BasicTableComponent } from './views/tables/basic-table/basic-table.component';
 import { Profile1Component } from './views/profile/profile1/profile1.component';
 import { NotFoundComponent } from './views/errors/not-found/not-found.component';
@@ -40,6 +41,7 @@ const homeRoutes: Routes = [
             },
 
             { path: 'records', component: RecordsComponent},
+            {path:'newrecord',component:newRecordsComponent},
             { path: '**', component: NotFoundComponent },
         ]
     }

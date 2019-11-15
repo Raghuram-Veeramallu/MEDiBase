@@ -11,6 +11,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { FooterComponent } from '../main-layout/footer/footer.component';
 import { BasicTableComponent } from './tables/basic-table/basic-table.component';
+import{newRecordsComponent} from './newrecord/newrecord.component';
 import { RecordsComponent } from './records/records.component';
 import { Map1Component } from './maps/map1/map1.component';
 import { StatsCardComponent } from './dashboards/common/stats-card/stats-card.component';
@@ -38,6 +39,7 @@ import { HelpComponent } from './help/help.component';
     FooterComponent,
     BasicTableComponent,
     RecordsComponent,
+    newRecordsComponent,
     Map1Component,
     StatsCardComponent,
     StatsCard2Component,
@@ -50,6 +52,7 @@ import { HelpComponent } from './help/help.component';
     FooterComponent,
     BasicTableComponent,
     RecordsComponent,
+    newRecordsComponent,
     Map1Component,
     StatsCardComponent,
     StatsCard2Component,    

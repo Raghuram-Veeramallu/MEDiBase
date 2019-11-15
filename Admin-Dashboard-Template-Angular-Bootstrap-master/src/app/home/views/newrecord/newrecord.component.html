@@ -1,1 +1,24 @@
-<label>Hi! You made it till here</label>
+
+<div >
+    <h1>
+        New Patient Record
+    </h1>
+</div>
+
+<div class="row">
+
+        <div class="column" style="padding: 7.5%" >
+            <form #institutesForm="ngForm" (ngSubmit)="instituteLogins(institutesForm)">
+                    <div class="form-group">
+        <label> Date </label>
+        <input type="date"   name="date" id="date"  class="form-control" [(ngModel)]="institutes.date">
+        <label> Symtoms </label>
+        <input type="text"  name="symtoms" id="symtoms"   class="form-control"[(ngModel)]="institutes.symtoms">
+        
+        <label> Prescription </label>
+        <input type="text"  id="prescription" name="prescription"  class="form-control"[(ngModel)]="institutes.prescription">
+        <br><br>
+        
+                    </div>
+                    <button id="record" class="btn btn-primary" type="submit" >Add Record</button> </form>
+    </div>

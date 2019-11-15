@@ -2,7 +2,7 @@
 <br>
 <div style="padding-left: 30%">
     <h1>
-        New User Registration
+        New Patient Registration
     </h1>
 </div>
 
@@ -18,6 +18,17 @@
         
         <label> Aadhar Number </label>
         <input type="number" hint="aadhar" id="aadhar" name="aadhar" maxlength="16"  minlength="16" class="form-control"[(ngModel)]="institutes.aadhar">
+        <label> Blood Group </label>
+        <input type="text" hint="blood" id="blood" name="blood"  class="form-control"[(ngModel)]="institutes.blood">
+        <label> Gender(Male or Female) </label>
+        <input type="text" hint="Gender" id="gender" name="gender"  class="form-control"[(ngModel)]="institutes.gender">
+        <label> Height </label>
+        <input type="text" hint="height" id="height" name="height" class="form-control"[(ngModel)]="institutes.height">
+        <label> Weight </label>
+        <input type="text" hint="weight" id="weight" name="weight" class="form-control"[(ngModel)]="institutes.weight">
+        <label> Location </label>
+        <input type="text" hint="location" id="location" name="location"  class="form-control"[(ngModel)]="institutes.location">
+
         <br><br>
         
                     </div>

@@ -38,13 +38,18 @@ export class NewuserComponent implements OnInit {
   institutes = {
     patient: '',
     phoneno: '',
-    aadhar:''
+    aadhar:'',
+    gender:'',
+    height:'',
+    weight:'',
+    location:'',
+    blood:''
   };
   instituteLogins(instaForm: NgForm){
     console.log("Entered new patient");
     
     console.log(instaForm.value);
-    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar']);
+    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],instaForm.value["gender"],instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"]);
     
   }
   
@@ -112,11 +117,16 @@ export class NewuserComponent implements OnInit {
 
 
 
-  addUser(uid: string, name: string, mobile: string){
+  addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string){
     var user = new User();
     user.uid = uid;
     user.name = name;
     user.mobile = mobile;
+    user.blood=blood;
+    user.gender=gender;
+    user.height=height;
+    user.weight=weight;
+    user.location=location;
     this.userService.createUser(user);
   }
 

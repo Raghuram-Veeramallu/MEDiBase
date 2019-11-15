@@ -2,7 +2,7 @@ var RecordModel = require("../models/recordmodel");
 
 var appRouter = function(app) {
 
-  app.get("/api/displayAll", function(req, res) {
+  app.post("/api/displayAll", function(req, res) {
     RecordModel.getAllDetails(req.body.patientUID, function(error, result) {
         if(error) {
             return res.status(400).send(error);
@@ -11,7 +11,7 @@ var appRouter = function(app) {
     });
   });
 
-  app.get("/api/patientRecords", function(req, res) {
+  app.post("/api/patientRecords", function(req, res) {
     if (!req.body.patientUID) {
       return res.status(400).send({"status": "error", "message": "PatientID is required for the documents"});
     }
@@ -27,9 +27,10 @@ var appRouter = function(app) {
     });
   });
 
-  app.get("/api/allYears", function(req, res) {
+  app.post("/api/allYears", function(req, res) {
     if (!req.body.patientUID) {
       return res.status(400).send({"status": "error", "message": "Patient UID is required for the documents"});
+      console.log("error");
     }
     RecordModel.getAllYears(req.body.patientUID, function(error, result){
       if (error){

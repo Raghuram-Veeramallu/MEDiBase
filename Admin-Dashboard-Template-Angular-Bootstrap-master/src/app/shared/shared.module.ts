@@ -11,6 +11,7 @@ import { CascadingCardComponent } from './components/cascading-card/cascading-ca
 import { OverlayCardComponent } from './components/overlay-card/overlay-card.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { FireBaseConfig } from "../../environments/firebaseConfig";
+import { HttpClientModule } from '@angular/common/http';
 //import { AdminGaurd } from "./services/admin-gaurd";
 //import { AuthGuard } from "./services/auth_gaurd";
 //import { AuthService } from "./services/auth.service";
@@ -24,6 +25,7 @@ import { UserService } from "./services/user.service";
     AngularFireModule.initializeApp(FireBaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    HttpClientModule,
     FormsModule,
   ],
   declarations: [

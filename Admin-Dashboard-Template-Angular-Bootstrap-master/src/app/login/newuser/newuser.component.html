@@ -22,9 +22,9 @@
         <input type="text" hint="blood" id="blood" name="blood"  class="form-control"[(ngModel)]="institutes.blood">
         <label> Gender </label>
         <br>
-        <input type="radio" required name='gender' value='Male' [(ngModel)]='gender'>Male
+        <input type="radio"  required name='gender' value='Male' [(ngModel)]='gender' (ngModelChange)="youMethodName(gender)">Male
         <br>
-        <input type="radio" required name='gender' value='Female' [(ngModel)]='gender'>Female
+        <input type="radio" required name='gender' value='Female'[(ngModel)]='gender'(ngModelChange)="youMethodName(gender)" >Female
         <br>
         <label> Height </label>
         <input type="text" hint="height" id="height" name="height" class="form-control"[(ngModel)]="institutes.height">

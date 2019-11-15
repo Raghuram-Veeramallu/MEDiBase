@@ -26,12 +26,13 @@ export class NewuserComponent implements OnInit {
   private router:Router;
   private datad: string;
   isShow=false;
+gend:string;
 
 
-
-
+  
   constructor(
     private userService: UserService
+    
     //private http: HttpClient
   ) { 
   }
@@ -45,11 +46,14 @@ export class NewuserComponent implements OnInit {
     location:'',
     blood:''
   };
+  youMethodName(model: any) {
+     this.gend=model;
+    }
   instituteLogins(instaForm: NgForm){
     console.log("Entered new patient");
     
     console.log(instaForm.value);
-    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],instaForm.value["gender"],instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"]);
+    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"]);
     
   }
   

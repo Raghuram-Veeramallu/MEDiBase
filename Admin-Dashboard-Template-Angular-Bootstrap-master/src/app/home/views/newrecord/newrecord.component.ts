@@ -11,7 +11,11 @@ export class newRecordsComponent implements OnInit {
   institutes = {
   date:'',
   symptoms:'',
-  prescription:''
+  allergy:'',
+  condition:'',
+  advice:'',
+  medication:'',
+  course:''
   
   
   }

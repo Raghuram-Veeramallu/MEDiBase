@@ -11,7 +11,10 @@ export class Profile1Component implements OnInit {
   age = "21";
   gender = "Male";
   phone = "9550869969";
-
+blood="O+";
+height="6'ft";
+weight="75 kg";
+location="Hyderabad";
   imagesBasic = [
     {
       img: 'https://mdbootstrap.com/img/Photos/Horizontal/Nature/12-col/img%20(117).jpg',

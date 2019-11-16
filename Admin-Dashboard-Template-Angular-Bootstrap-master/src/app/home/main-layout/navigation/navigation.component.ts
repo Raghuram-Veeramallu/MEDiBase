@@ -44,7 +44,9 @@ export class NavigationComponent implements OnInit {
     //this.user = new User();
     //this.insertImage();
   }
- 
+  getSelectedyear(year:any){
+    console.log(year)
+  }
   ngOnInit() {
     // const x = this.userService.getUserById("Lp9aqaY9Xwk8zJr4FyT");
     // x.snapshotChanges().subscribe(

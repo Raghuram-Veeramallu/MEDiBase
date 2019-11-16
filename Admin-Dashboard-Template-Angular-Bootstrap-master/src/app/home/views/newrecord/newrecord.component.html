@@ -10,22 +10,26 @@
         <div class="column" style="padding: 7.5%" >
             <form #institutesForm="ngForm" (ngSubmit)="instituteLogins(institutesForm)">
                     <div class="form-group">
-        <label> Date </label>
+        <label> <strong>Date</strong> </label>
         <input type="date"   name="date" id="date"  class="form-control" [(ngModel)]="institutes.date">
-        <label>Patient Problems</label>
-        <label> Symtoms </label>
+        <br>
+        <h2> <strong> Patient Problems</strong></h2>
+        
+        <label><strong> Symtoms</strong> </label>
         <input type="text"  name="symtoms" id="symtoms"   class="form-control"[(ngModel)]="institutes.symtoms">
-        <label> Allergy </label>
+        <label><strong>Allergy</strong>  </label>
         <input type="text"  name="allergy" id="allergy"   class="form-control"[(ngModel)]="institutes.allergy">
-        <label>Diagnosis</label>
-        <label> Condition </label>
+        <br>
+        <h2><strong>Diagnosis</strong></h2>
+        
+        <label> <strong>Condition</strong> </label>
         <input type="text"  name="condition" id="condition"   class="form-control"[(ngModel)]="institutes.condition">
-        <label> Advice </label>
+        <label><strong> Advice </strong></label>
         <input type="text"  name="advice" id="advice"   class="form-control"[(ngModel)]="institutes.advice">
-        <label> Prescription </label>
-        <label> Medication </label>
+        <label> <strong>Prescription</strong> </label>
+        <label><strong> Medication </strong></label>
         <input type="text"  name="medication" id="medication"   class="form-control"[(ngModel)]="institutes.medication">
-        <label>Course</label>
+        <label><strong>Course</strong></label>
         <input type="text"  id="course" name="course"  class="form-control"[(ngModel)]="institutes.course">
         <br><br>
         

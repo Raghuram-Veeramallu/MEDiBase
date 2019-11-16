@@ -53,11 +53,12 @@ aria-hidden="true">
 
         <div class="list-group "  *ngFor="let year of years | async">
               
-            <a routerLink="records"  routerLinkActive="active" >
-                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{year.key}}</a>
-                
+            <a routerLink="records"  (click)="activeYear = year.key" [class.active]="activeYear == year.key" >
+                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{year.key}}
+          </a>
+                    
         </div>
-
+       
 
     </div>
     <!-- Sidebar -->

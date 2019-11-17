@@ -44,7 +44,8 @@ gend:string;
     height:'',
     weight:'',
     location:'',
-    blood:''
+    blood:'',
+    age:''
   };
   youMethodName(model: any) {
      this.gend=model;
@@ -53,7 +54,7 @@ gend:string;
     console.log("Entered new patient");
     
     console.log(instaForm.value);
-    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"]);
+    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"]);
     }
   
   ngOnInit(){
@@ -120,7 +121,7 @@ gend:string;
 
 
 
-  addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string){
+  addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string){
     var user = new User();
     user.uid = uid;
     user.name = name;
@@ -130,6 +131,7 @@ gend:string;
     user.height=height;
     user.weight=weight;
     user.location=location;
+    user.age=age;
     this.userService.createUser(user);
   }
 

@@ -8,4 +8,5 @@ export class User{
   height:string;
   weight:string;
   location:string;
+  age: string;
 }

@@ -20,6 +20,8 @@
         <input type="number" hint="aadhar" id="aadhar" name="aadhar" maxlength="16"  minlength="16" class="form-control"[(ngModel)]="institutes.aadhar">
         <label> Blood Group </label>
         <input type="text" hint="blood" id="blood" name="blood"  class="form-control"[(ngModel)]="institutes.blood">
+        <label> Age </label>
+        <input type="text" hint="blood" id="age" name="age"  class="form-control"[(ngModel)]="institutes.age">
         <label> Gender </label>
         <br>
         <input type="radio"  required name='gender' value='Male' [(ngModel)]='gender' (ngModelChange)="youMethodName(gender)">Male

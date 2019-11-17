@@ -58,7 +58,7 @@ gend:string;
     
     console.log(instaForm.value);
     this.authenticationService.SignUp(this.institutes.email,"123456");
-    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"]);
+    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
     }
   
   ngOnInit(){
@@ -125,7 +125,7 @@ gend:string;
 
 
 
-  addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string){
+  addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){
     var user = new User();
     user.uid = uid;
     user.name = name;
@@ -136,6 +136,7 @@ gend:string;
     user.weight=weight;
     user.location=location;
     user.age=age;
+    user.email=email;
     this.userService.createUser(user);
   }
 

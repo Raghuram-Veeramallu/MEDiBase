@@ -9,4 +9,5 @@ export class User{
   weight:string;
   location:string;
   age: string;
+  email: string;
 }

@@ -8,13 +8,16 @@ import { NgForm } from '@angular/forms';
 })
 export class newRecordsComponent implements OnInit {
 
-
-  
+  allCourses : string[] = [];
+  allsymptoms : string[]=[];
+  allcdays:string[]=[];
+  allmedications:string[]=[];
+  alltypes:string[]=[];
   constructor() { }
   institutes = {
   date:'',
   symptoms:'',
-  allergy:'',
+  
   condition:'',
   advice:'',
   medication:'',
@@ -23,17 +26,26 @@ export class newRecordsComponent implements OnInit {
   cday:''
   
   
-  }
-  instituteLogins(instaForm: NgForm){
-  console.log(instaForm.value);
   
   }
-public append()
-{
+  instituteLogins(instaForm: NgForm){
+  
+  this.allCourses.push(instaForm.value["course"]);
+  this.allcdays.push(instaForm.value["cday"]);
+  this.allmedications.push(instaForm.value["medication"]);
+  this.alltypes.push(instaForm.value["type"]);
+  this.allsymptoms.push(instaForm.value["symptoms"]);
+  console.log(this.allCourses);
   this.institutes.cday="";
   this.institutes.medication="";
   this.institutes.course="";
   this.institutes.type="";
+  this.institutes.symptoms="";
+  }
+public append()
+{
+  
+  
 }
   ngOnInit() {
   }

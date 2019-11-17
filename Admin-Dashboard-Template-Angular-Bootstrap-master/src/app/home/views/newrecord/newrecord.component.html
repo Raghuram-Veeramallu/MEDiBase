@@ -13,12 +13,10 @@
         <label > <strong>Date</strong> </label>
         <input type="date"   name="date" id="date"  class="form-control" [(ngModel)]="institutes.date">
         <br>
-        <h2> <strong> Patient Problems</strong></h2>
-        
-        <label><strong> Symtoms</strong> </label>
+               
+        <label><strong> Symptoms</strong> </label>
         <input type="text"  name="symtoms" id="symtoms"   class="form-control"[(ngModel)]="institutes.symtoms">
-        <label><strong>Allergy</strong>  </label>
-        <input type="text"  name="allergy" id="allergy"   class="form-control"[(ngModel)]="institutes.allergy">
+        
         <br>
         <h2><strong>Diagnosis</strong></h2>
         
@@ -45,7 +43,6 @@
         
                     </div>
                     <button id="record"  class="btn btn-primary" type="submit" >Add Record</button> </form>
-                    <br>
-                    <button id="add" (click)="append()" class="btn btn-primary"  >Add More Medication</button>                   
+                   
     </div>
   

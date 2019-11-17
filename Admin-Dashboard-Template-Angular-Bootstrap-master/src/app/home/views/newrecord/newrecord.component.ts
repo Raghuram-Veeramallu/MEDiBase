@@ -44,7 +44,7 @@ export class newRecordsComponent implements OnInit {
   }
 public append()
 {
-  
+  console.log("I made it");
   
 }
   ngOnInit() {

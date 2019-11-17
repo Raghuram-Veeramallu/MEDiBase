@@ -10,7 +10,7 @@
         <div class="column" style="padding: 7.5%" >
             <form #institutesForm="ngForm" (ngSubmit)="instituteLogins(institutesForm)">
                     <div class="form-group">
-        <label> <strong>Date</strong> </label>
+        <label > <strong>Date</strong> </label>
         <input type="date"   name="date" id="date"  class="form-control" [(ngModel)]="institutes.date">
         <br>
         <h2> <strong> Patient Problems</strong></h2>
@@ -31,10 +31,21 @@
         <br>
         <label><strong> Medication </strong></label>
         <input type="text"  name="medication" id="medication"   class="form-control"[(ngModel)]="institutes.medication">
+        <label><strong> Medicine Type </strong></label>
+        <input type="text"  name="type" id="type"   class="form-control"[(ngModel)]="institutes.type">
         <label><strong>Course</strong></label>
         <input type="text"  id="course" name="course"  class="form-control"[(ngModel)]="institutes.course">
+        <label><strong> How many per day? </strong></label>
+        
+        
+        <input type="text"  name="cday" id="cday"   class="form-control"[(ngModel)]="institutes.cday">
+        <br>
+       
         <br><br>
         
                     </div>
-                    <button id="record" class="btn btn-primary" type="submit" >Add Record</button> </form>
+                    <button id="record"  class="btn btn-primary" type="submit" >Add Record</button> </form>
+                    <br>
+                    <button id="add" (click)="append()" class="btn btn-primary"  >Add More Medication</button>                   
     </div>
+  

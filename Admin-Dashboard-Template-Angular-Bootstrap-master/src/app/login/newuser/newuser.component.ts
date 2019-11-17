@@ -6,7 +6,8 @@ import * as $ from 'jquery';
 import { User } from 'src/app/shared/models/user';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
-
+import { AuthenticationService } from 'src/app/shared/services/authentication.service'
+ 
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -31,7 +32,8 @@ gend:string;
 
   
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authenticationService:AuthenticationService
     
     //private http: HttpClient
   ) { 
@@ -45,7 +47,8 @@ gend:string;
     weight:'',
     location:'',
     blood:'',
-    age:''
+    age:'',
+    email:''
   };
   youMethodName(model: any) {
      this.gend=model;
@@ -54,6 +57,7 @@ gend:string;
     console.log("Entered new patient");
     
     console.log(instaForm.value);
+    this.authenticationService.SignUp(this.institutes.email,"123456");
     this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"]);
     }
   

@@ -15,13 +15,15 @@
         <input type="text" ng-maxlength="10" hint="Full Name"  name="patient" id="name"  class="form-control" [(ngModel)]="institutes.patient">
         <label> Phone Number </label>
         <input type="number" hint="phone" name="phoneno" id="phone" maxlength="10" minlength="10"  class="form-control"[(ngModel)]="institutes.phoneno">
+        <label> Gmail Id: </label>
+        <input type="email" hint="email" name="email" id="email"  class="form-control"[(ngModel)]="institutes.email">
         
         <label> Aadhar Number </label>
         <input type="number" hint="aadhar" id="aadhar" name="aadhar" maxlength="16"  minlength="16" class="form-control"[(ngModel)]="institutes.aadhar">
         <label> Blood Group </label>
         <input type="text" hint="blood" id="blood" name="blood"  class="form-control"[(ngModel)]="institutes.blood">
         <label> Age </label>
-        <input type="text" hint="blood" id="age" name="age"  class="form-control"[(ngModel)]="institutes.age">
+        <input type="text" hint="age" id="age" name="age"  class="form-control"[(ngModel)]="institutes.age">
         <label> Gender </label>
         <br>
         <input type="radio"  required name='gender' value='Male' [(ngModel)]='gender' (ngModelChange)="youMethodName(gender)">Male

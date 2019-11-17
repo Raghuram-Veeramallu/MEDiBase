@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-records',
   templateUrl: './newrecord.component.html',
@@ -7,6 +8,8 @@ import { NgForm } from '@angular/forms';
 })
 export class newRecordsComponent implements OnInit {
 
+
+  
   constructor() { }
   institutes = {
   date:'',
@@ -15,14 +18,23 @@ export class newRecordsComponent implements OnInit {
   condition:'',
   advice:'',
   medication:'',
-  course:''
+  course:'',
+  type:'',
+  cday:''
   
   
   }
   instituteLogins(instaForm: NgForm){
   console.log(instaForm.value);
+  
   }
-
+public append()
+{
+  this.institutes.cday="";
+  this.institutes.medication="";
+  this.institutes.course="";
+  this.institutes.type="";
+}
   ngOnInit() {
   }
 

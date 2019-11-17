@@ -22,7 +22,7 @@ export class FacilityLoginComponent {
     private router: Router,
     private toastrService: ToastrService,
     private userService: UserService,
-   
+  
     //private records: RecordsService
   ) {
     //this.records.run();
@@ -55,8 +55,10 @@ export class FacilityLoginComponent {
 });
   }
   
-  newUser(){
-    this.router.navigateByUrl('/login/newuser');
+ public newUser(){
+var status="success";
+console.log(status);
+this.router.navigateByUrl('/login/olduser');
   }
   verifyuser(email: string){
   

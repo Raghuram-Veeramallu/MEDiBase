@@ -40,9 +40,12 @@ show:boolean;
   uid: string;
   private userName: string;
   private router: Router;
+  
+  isDisable: boolean;
 
   constructor(
     private userService: UserService,
+    
     //public toastr: ToastrService,
     //private router: Router
   ) { 
@@ -50,8 +53,7 @@ show:boolean;
     //this.uid = '-1';
   }
   ngOnInit(){
-
-  }
+    }
   newUser(){
     this.router.navigateByUrl('../../login/newuser');
   }

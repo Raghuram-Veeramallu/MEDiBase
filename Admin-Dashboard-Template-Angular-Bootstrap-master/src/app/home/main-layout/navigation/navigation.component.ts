@@ -6,8 +6,9 @@ import { Observable } from 'rxjs';
 //import { User } from 'src/app/shared/models/user';
 //import { UserService } from 'src/app/shared/services/user.service';
 //import { AngularFireObject } from 'angularfire2/database';
-//import * as jspdf from 'jspdf';
-///import html2canvas from 'html2canvas';
+import * as jspdf from 'jspdf';
+//import html2canvas from 'html2canvas';
+//import jsPDF = require('jspdf');
 //import { Ng2ImgMaxService } from 'ng2-img-max';
 //declare function require(path: string):any;
 
@@ -24,6 +25,7 @@ export class NavigationComponent implements OnInit {
   resizedImage: Blob;
   name:string;
   years:Observable<any[]>;
+ 
   // TODO: Need to fix the click effect of years
    
   
@@ -32,6 +34,7 @@ export class NavigationComponent implements OnInit {
   
   constructor(af:AngularFireDatabase,
     private router: Router,
+   
     
     //private userService: UserService
     //private ng2ImgMax: Ng2ImgMaxService
@@ -60,7 +63,8 @@ export class NavigationComponent implements OnInit {
 		// 	(_error) => {
 		// 		console.log('Error while fetching Product Detail');
 		// 	}
-		// );
+    // );
+   
   }
 
   setClicked(val: boolean): void {
@@ -77,23 +81,12 @@ export class NavigationComponent implements OnInit {
     }
   }
 
-  // pdfGen(){
-  //   const data = document.getElementById('receipt');
-
-	// 	html2canvas(data).then((canvas) => {
-	// 		// Few necessary setting options
-	// 		const imgWidth = 208;
-	// 		//const pageHeight = 295;
-	// 		const imgHeight = canvas.height * imgWidth / canvas.width;
-	// 		//const heightLeft = imgHeight;
-
-	// 		const contentDataURL = canvas.toDataURL('image/png');
-	// 		const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
-	// 		const position = 0;
-	// 		pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-	// 		pdf.save('receipt.pdf'); // Generated PDF
-	// 	});
-  // }
+  pdfGen(){
+    const pdf = new jspdf('p', 'mm', 'a4');
+       
+        pdf.save('Test.pdf'); // Generated PDF
+		
+  }
 
   // insertImage() {
   //   let image = require('../../../../assets/img/male_avatar.png');

@@ -54,8 +54,7 @@ gend:string;
     
     console.log(instaForm.value);
     this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"]);
-    
-  }
+    }
   
   ngOnInit(){
   //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);

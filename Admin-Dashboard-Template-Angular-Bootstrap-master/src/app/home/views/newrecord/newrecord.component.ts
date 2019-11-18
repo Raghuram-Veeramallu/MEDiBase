@@ -30,22 +30,23 @@ export class newRecordsComponent implements OnInit {
   }
   instituteLogins(instaForm: NgForm){
   
-  this.allCourses.push(instaForm.value["course"]);
-  this.allcdays.push(instaForm.value["cday"]);
-  this.allmedications.push(instaForm.value["medication"]);
-  this.alltypes.push(instaForm.value["type"]);
-  this.allsymptoms.push(instaForm.value["symptoms"]);
+  console.log(instaForm.value["cday"]);
   console.log(this.allCourses);
+ 
+  }
+public append()
+{
+  console.log("I made it");
+  this.allCourses.push(this.institutes.course);
+  this.allcdays.push(this.institutes.cday);
+  this.allmedications.push(this.institutes.medication);
+  this.alltypes.push(this.institutes.type);
+  this.allsymptoms.push(this.institutes.symptoms);
   this.institutes.cday="";
   this.institutes.medication="";
   this.institutes.course="";
   this.institutes.type="";
   this.institutes.symptoms="";
-  }
-public append()
-{
-  console.log("I made it");
-  
 }
   ngOnInit() {
   }

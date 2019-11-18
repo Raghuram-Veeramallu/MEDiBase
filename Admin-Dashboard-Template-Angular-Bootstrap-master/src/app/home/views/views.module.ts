@@ -20,6 +20,7 @@ import { Dashboard1Component } from './dashboards/dashboard1/dashboard1.componen
 import { Profile1Component } from './profile/profile1/profile1.component';
 import { HelpComponent } from './help/help.component';
 
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { HelpComponent } from './help/help.component';
     BasicTableComponent,
     RecordsComponent,
     newRecordsComponent,
+    CardComponent,
     Map1Component,
     StatsCardComponent,
     StatsCard2Component,

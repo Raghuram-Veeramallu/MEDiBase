@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 //import { AuthGuard } from "./services/auth_gaurd";
 //import { AuthService } from "./services/auth.service";
 import { UserService } from "./services/user.service";
+import { RecordsService } from './services/records.service';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { UserService } from "./services/user.service";
     FormsModule
   ],
   providers: [
-    UserService, FormBuilder
+    UserService, FormBuilder, RecordsService
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })

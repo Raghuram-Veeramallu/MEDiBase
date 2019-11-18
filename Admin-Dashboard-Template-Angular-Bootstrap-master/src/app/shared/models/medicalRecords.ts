@@ -1,29 +1,29 @@
 
-export class pres{
+export class Prescription{
   medication: string;
   doseage: string;
 }
 
-export class diagn{
+export class Diagnosis{
   condition: string;
   advice: string;
 }
 
-export class problem{
+export class Problem{
   symptom: string;
   allergy: string;
 }
 
-export class record{
+export class Record{
   institute_ID: string;
   date_of_visit: string;
   // If we need to make it an array of problems, diagnosis and prescription then we can make it here
-  problems: problem;
-  diagnosis: diagn;
-  prescription: pres;
+  problems: Array<Problem>;
+  diagnosis: Array<Diagnosis>;
+  prescription: Array<Prescription>;
 }
 
-export class years{
+export class Records{
   year: number;
-  records: Array<record>;
+  records: Array<Record>;
 }

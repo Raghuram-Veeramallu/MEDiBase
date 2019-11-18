@@ -5,6 +5,7 @@ import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/cor
 import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation.component';
 import { Ng2ImgMaxModule } from 'ng2-img-max';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
     RouterModule,
     FormsModule,
     MDBBootstrapModule.forRoot(),
-    Ng2ImgMaxModule
+    Ng2ImgMaxModule,
+    SharedModule
   ],
   declarations: [
     NavigationComponent,

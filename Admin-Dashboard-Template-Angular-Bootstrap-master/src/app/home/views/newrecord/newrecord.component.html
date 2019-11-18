@@ -3,19 +3,25 @@
     <h1>
         New Patient Record
     </h1>
+    <button (click)="append()" class="btn btn-primary" style="margin-left: 70%;">Prescribe more medicines</button>
 </div>
-
-<div class="row">
-
-        <div class="column" style="padding: 7.5%" >
+<div class="row" style="padding-top: 0px;">
+<div class="column"></div>
+<div class="column">
+<label > <strong>Date</strong> </label>
+<input type="date"   name="date" id="date"  class="form-control" [(ngModel)]="institutes.date">
+</div>
+</div>
+<div class="row" style="padding-top:0px" >
+        <div class="container" style="padding-left: 7.5%" >
             <form #institutesForm="ngForm" (ngSubmit)="instituteLogins(institutesForm)">
                     <div class="form-group">
-        <label > <strong>Date</strong> </label>
-        <input type="date"   name="date" id="date"  class="form-control" [(ngModel)]="institutes.date">
-        <br>
-               
-        <label><strong> Symptoms</strong> </label>
-        <input type="text"  name="symtoms" id="symtoms"   class="form-control"[(ngModel)]="institutes.symtoms">
+                            <div class="row">
+                                    <div class="column">             
+                                            
+                       
+        <h2><strong> Symptoms</strong> </h2>
+        <input type="text"  name="symptoms" id="symptoms"   class="form-control"[(ngModel)]="institutes.symptoms">
         
         <br>
         <h2><strong>Diagnosis</strong></h2>
@@ -25,6 +31,9 @@
         <label><strong> Advice </strong></label>
         <input type="text"  name="advice" id="advice"   class="form-control"[(ngModel)]="institutes.advice">
         <br>
+        
+    </div>
+    <div class="column">
         <h2> <strong>Prescription</strong> </h2>
         <br>
         <label><strong> Medication </strong></label>
@@ -38,11 +47,19 @@
         
         <input type="text"  name="cday" id="cday"   class="form-control"[(ngModel)]="institutes.cday">
         <br>
-       
+    </div>
+    <div class="row">
+        <div class="column"></div>
+        <div class="column">
+        <button id="record"  class="btn btn-primary" type="submit" >Add Record</button>
+    </div>
+</div>
+   
+       </div>
         <br><br>
         
                     </div>
-                    <button id="record"  class="btn btn-primary" type="submit" >Add Record</button> </form>
-                   
+                     </form>
+                    
     </div>
-  
+

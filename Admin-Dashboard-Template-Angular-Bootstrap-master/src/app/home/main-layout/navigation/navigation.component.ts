@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 //import{ AngularFireDatabase} from 'angularfire2/database';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 
 //import { User } from 'src/app/shared/models/user';
 //import { UserService } from 'src/app/shared/services/user.service';
 //import { AngularFireObject } from 'angularfire2/database';
 import * as jspdf from 'jspdf';
 import { RecordsService } from 'src/app/shared/services/records.service';
+//import { HttpClient } from '@angular/common/http';
 //import html2canvas from 'html2canvas';
 //import jsPDF = require('jspdf');
 //import { Ng2ImgMaxService } from 'ng2-img-max';
@@ -19,37 +20,39 @@ import { RecordsService } from 'src/app/shared/services/records.service';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+
   @ViewChild('sidenav', {static: true}) sidenav: ElementRef;
 
   //years = ['1999', '2004', '2019'];
   clicked: boolean;
   resizedImage: Blob;
   name:string;
-  years:Observable<any[]>;
+  years:any;
  
   // TODO: Need to fix the click effect of years
   
   constructor(
     private router: Router,
-    private recordService: RecordsService
+    private recordService: RecordsService,
+    //private httpClient: HttpClient
   ) {
     this.clicked = this.clicked === undefined ? false : true;
     this.name = "Akhilesh";
-    //this.years = this.getAllYears();
-    //af.list('/years/'+this.name).snapshotChanges();
+    this.getYears("6WLIX6FWj9gTCTPuf1vxFi4N3gm1");
+    //this.years = af.list('/years/'+this.name).snapshotChanges();
     //console.log(this.years);
-//this.years=['199'];
+    //this.years=['199'];
     //this.user = new User();
     //this.insertImage();
   }
+    
   getSelectedyear(year:any){
-    console.log(year)
-  }
+      console.log(year)
+    }
   
-  getAllYears(){
-    console.log(this.recordService.getAllYears("rTHDf5bLW0SjpMAndIAOxQEXxgB3"));
-    //console.log(y);
-    //return y;
+  getYears(patientUID:string){
+    this.years = this.recordService.getAllYears(patientUID);
+    console.log(this.years);
   }
 
   ngOnInit() {
@@ -68,6 +71,23 @@ export class NavigationComponent implements OnInit {
     // );
    
   }
+
+
+  // var posting = {
+    //   patientUID: "rTHDf5bLW0SjpMAndIAOxQEXxgB3"
+    // }
+    // const url = `http://localhost:3000/api/allYears/`;
+    // this.httpClient.post(url, posting).subscribe(data => {
+    //     var temp = data;
+    //     //this.years = temp[0].all_years;
+    // })
+    // console.log(this.years);
+    // return this.years;
+
+
+
+    //console.log(y);
+    //return y;
 
   setClicked(val: boolean): void {
     this.clicked = val;

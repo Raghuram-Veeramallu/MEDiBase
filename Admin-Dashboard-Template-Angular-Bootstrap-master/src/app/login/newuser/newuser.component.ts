@@ -87,15 +87,12 @@ gend:string;
     //routerLink="../../home/dashboard"
    }
   public capture() {
-    //console.log(uidT);
-  //check
   
     this.isShow=!this.isShow;
     var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
-    //uid = "270724743647";
     this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0,360, 240);
     this.image = this.canvas.nativeElement.toDataURL("image/png");
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + uid + "\",\r\n    \"gallery_name\":\"ge\"\r\n}";
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + uid + "\",\r\n    \"gallery_name\":\"medibase\"\r\n}";
     const settings = {
       "async": true,
       "crossDomain": true,
@@ -103,8 +100,8 @@ gend:string;
       "method": "POST",
       "headers": {
           "content-type": "application/json",
-          "app_id": "731a6b91",
-          "app_key": "dfcfe5f1dc7702d10842523844233761",
+          "app_id": "744ed0da",
+          "app_key": "291ab2350e2e88feca76ac97e6dfafa6",
           "cache-control": "no-cache"
       },
       "processData": false,

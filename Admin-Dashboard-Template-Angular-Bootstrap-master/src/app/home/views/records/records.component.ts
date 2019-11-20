@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 //import { Records } from 'src/app/shared/models/medicalRecords';
 import { RecordsService } from 'src/app/shared/services/records.service';
-import { NavigationComponent } from '../../main-layout/navigation/navigation.component';
+//import { NavigationComponent } from '../../main-layout/navigation/navigation.component';
 
 @Component({
   selector: 'app-records',
@@ -18,22 +18,25 @@ export class RecordsComponent implements OnInit {
   
   constructor(
      private recordService: RecordsService,
-     private navigationComp: NavigationComponent
+     //private navigationComp: NavigationComponent
   ) {
-     //this.getMedicalRecords(1992,"6WLIX6FWj9gTCTPuf1vxFi4N3gm1");
+     this.getMedicalRecords();
+     console.log(localStorage.getItem("selectedYear"));
      //console.log(this.records);
      //console.log(this.navigationComp.getSelectedyear());
      //this.getMedicalRecords(this.navigationComp.getSelectedyear(), this.navigationComp.getPatientUID());
   }
 
-  getMedicalRecords(year:number, patientUID: string){
-    console.log(year);
-    this.records = this.recordService.getRecordPerYear(patientUID, year);
+  getMedicalRecords(){
+    console.log(Number(localStorage.getItem("selectedYear")));
+    console.log(String(localStorage.getItem("patientUID")));
+    const x = this.recordService.getRecordPerYear(String(localStorage.getItem("patientUID")), Number(localStorage.getItem("selectedYear")));
+    //x.subscribe()
   }
 
   ngOnInit() {
-    console.log(this.navigationComp.getSelectedyear());
-    //this.getMedicalRecords(this.navigationComp.getSelectedyear(), this.navigationComp.getPatientUID());
+    console.log(Number(localStorage.getItem("selectedYear")));
+    this.getMedicalRecords();
   }
 
 }

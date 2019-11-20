@@ -44,12 +44,14 @@ export class NavigationComponent implements OnInit {
     this.clicked = this.clicked === undefined ? false : true;
     this.name = "Akhilesh";
     this.setPatientUID("rTHDf5bLW0SjpMAndIAOxQEXxgB3");
+    localStorage.setItem("patientUID", "rTHDf5bLW0SjpMAndIAOxQEXxgB3");
     this.getYears();
   }
 
   onSelectedYear(year: any){
     this.setSelectedyear(year).then(_res =>{
-      console.log(NavigationComponent.selectedYear);
+      //console.log(NavigationComponent.selectedYear);
+      localStorage.setItem("selectedYear", year);
       //this.recordsComponent.getMedicalRecords(year, this.patientUID);
       this.router.navigate(['/home/records']);
     });

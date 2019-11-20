@@ -27,7 +27,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     NO_ERRORS_SCHEMA,
     CUSTOM_ELEMENTS_SCHEMA
   ],
-  providers: []
+  providers: [NavigationComponent]
 })
 export class NavigationModule {
 

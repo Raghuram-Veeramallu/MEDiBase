@@ -133,7 +133,7 @@ show:boolean;
   }
 
   public sendToApi(): any {
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"medibase\"\r\n}"
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp\"\r\n}"
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -141,8 +141,8 @@ show:boolean;
       "method": "POST",
       "headers": {
           "content-type": "application/json",
-          "app_id": "744ed0da",
-          "app_key": "291ab2350e2e88feca76ac97e6dfafa6",
+          "app_id": "731a6b91",
+          "app_key": "dfcfe5f1dc7702d10842523844233761",
           "cache-control": "no-cache"
       },
       "processData": false,

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+<<<<<<< HEAD
 //import { Records } from 'src/app/shared/models/medicalRecords';
 import { RecordsService } from 'src/app/shared/services/records.service';
 //import { NavigationComponent } from '../../main-layout/navigation/navigation.component';
+=======
+>>>>>>> parent of 4d65440... Merge branch 'master' of https://github.com/Raghuram-Veeramallu/DocDocx_IWSProject
 
 @Component({
   selector: 'app-records',
@@ -11,6 +14,7 @@ import { RecordsService } from 'src/app/shared/services/records.service';
 })
 export class RecordsComponent implements OnInit {
   years:Observable<any[]>;
+<<<<<<< HEAD
 
   records: any;
 
@@ -38,6 +42,15 @@ export class RecordsComponent implements OnInit {
   ngOnInit() {
     console.log(Number(localStorage.getItem("selectedYear")));
     this.getMedicalRecords();
+=======
+   cards = [{ id: 1, title: 'First Card'}, { id: 2, title: 'Second Card'}, { id: 3, title: 'Third Card'}];
+  constructor() {
+    
+  }
+
+  ngOnInit() {
+   
+>>>>>>> parent of 4d65440... Merge branch 'master' of https://github.com/Raghuram-Veeramallu/DocDocx_IWSProject
   }
 
 }

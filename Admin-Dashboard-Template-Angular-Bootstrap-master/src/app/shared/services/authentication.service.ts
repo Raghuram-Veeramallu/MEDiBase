@@ -23,7 +23,7 @@ console.log('You are Successfully signed up!', res);
 this.angularFireAuth
     .auth
     .signInWithEmailAndPassword(email, password)
-    .then(res => {
+    .then(_res => {
     console.log('You are Successfully logged in!');
    // console.log(this.angularFireAuth.auth.currentUser);
     })

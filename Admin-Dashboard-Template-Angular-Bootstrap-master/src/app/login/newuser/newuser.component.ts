@@ -1,7 +1,5 @@
+
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
-//import { HttpClient } from '@angular/common/http';
-//import { Observable } from 'rxjs/internal/Observable';
-//import { map } from 'rxjs/operators';
 import * as $ from 'jquery';
 import { User } from 'src/app/shared/models/user';
 import { Router } from '@angular/router';
@@ -17,11 +15,12 @@ import * as firebase from 'firebase';
   templateUrl: './newuser.component.html',
   styleUrls: ['./newuser.component.scss']
 })
+
 export class NewuserComponent implements OnInit {
 
   @ViewChild("video", {static: false})
-    public video: ElementRef;
-    @ViewChild('f', { static: false }) signupForm: NgForm;
+  public video: ElementRef;
+  @ViewChild('f', { static: false }) signupForm: NgForm;
   @ViewChild("canvas", {static: false})
   public canvas: ElementRef;
 
@@ -29,19 +28,13 @@ export class NewuserComponent implements OnInit {
   private router:Router;
   private datad: string;
   isShow=false;
-gend:string;
+  gend:string;
 
-
-  
   constructor(
     private userService: UserService,
     private authenticationService:AuthenticationService,
     public af:AngularFireAuth
-    
-    //private http: HttpClient
-  ) { 
-    
-  }
+  ) {  }
   institutes = {
     patient: '',
     phoneno: '',
@@ -58,8 +51,7 @@ gend:string;
      this.gend=model;
     }
   instituteLogins(instaForm: NgForm){
-    console.log("Entered new patient");
-    
+    //console.log("Entered new patient");
     console.log(instaForm.value);
     
     this.authenticationService.SignUp(this.institutes.email,"123456");
@@ -72,13 +64,13 @@ gend:string;
     });
     
     //this.login();
+    this.addToServer("rTHDf5bLW0SjpMAndIAOxQEXxgB3");
     this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
-
     
   }
   
   ngOnInit(){
-  //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);
+    //this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);
   }
  
   public ngAfterViewInit() {
@@ -103,12 +95,14 @@ gend:string;
     //routerLink="../../home/dashboard"
    }
   public capture() {
-  
     this.isShow=!this.isShow;
-    var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
+    //var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
     this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0,360, 240);
     this.image = this.canvas.nativeElement.toDataURL("image/png");
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + uid + "\",\r\n    \"gallery_name\":\"medibase\"\r\n}";
+  }
+
+  addToServer(uid:string){
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + uid + "\",\r\n    \"gallery_name\":\"temp\"\r\n}";
     const settings = {
       "async": true,
       "crossDomain": true,
@@ -132,10 +126,7 @@ gend:string;
           console.log("failure");
       }
     });
-    
-
   }
-
 
 
   addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){

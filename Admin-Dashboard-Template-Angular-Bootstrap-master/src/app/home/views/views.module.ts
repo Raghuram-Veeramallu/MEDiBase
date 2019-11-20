@@ -60,6 +60,9 @@ import { CardComponent } from './card/card.component';
     StatsCard2Component,    
     Dashboard1Component
   ],
+  providers: [
+    RecordsComponent
+  ],
   schemas: [NO_ERRORS_SCHEMA]
 })
 export class ViewsModule { }

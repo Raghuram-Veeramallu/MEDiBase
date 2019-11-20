@@ -1,49 +1,46 @@
 
-import { Injectable } from '@angular/core';
-//import { Records } from '../models/medicalRecords';
-import { map } from 'rxjs/operators';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 @Injectable()
-export class RecordsService {
+export class RecordsService implements OnInit {
 
-    //private records: Array<Records>;
-    //private yearlyRecords: Records;
-    private years: any;
+    years: Object;
 
     constructor(
         private httpClient: HttpClient
-    ){
+    ){ }
+
+    // MASTER RECORDS PLZ DO NOT USE
+    // getAllRecords(id: string){
+    //     var posting = {
+    //         patientUID: id
+    //     }
+    //     const url = `http://localhost:3000/api/displayAll/`;
+    //     return this.httpClient.post(url, posting);
+    // }
+
+    ngOnInit() { 
     }
 
-    // getAllRecords(patientUID: string){
-    //     return this.httpClient.post("http://localhost:3000/api/allYears/", {
-    //         patientUID: "rTHDf5bLW0SjpMAndIAOxQEXxgB3"
-    //     }).toPromise().then((data) =>{
-    //         console.log(data as JSON);
-    //     })
-    // }
-
-    // getRecordPerYear(patientUID: string, year: number){
-
-    // }
-
-    getAllYears(patientUID: string){
+    getAllYears(id: string): Observable<Object>{//patientUID: string){
         var posting = {
-            patientUID: patientUID
+            patientUID: id
         }
-        this.httpClient.post("http://localhost:3000/api/allYears/", posting).pipe(map(data => {
-            this.years = data;
-            //console.log(this.years);
-        })).subscribe((res) => {
-            console.log(res);
-            //this.years = res;
-            return this.years;
-            //this.years = this.years[0].all_years;
-        });
-        //console.log(this.years);
-        return this.years;
+        const url = `http://localhost:3000/api/allYears/`;
+        return this.httpClient.post(url, posting);
+    }
+
+
+    getRecordPerYear(id: string, yr: number){
+        var posting = {
+            patientUID: id,
+            year: yr
+        }
+        const url = `http://localhost:3000/api/patientRecords/`;
+        return this.httpClient.post(url, posting);
     }
 
     // createRecord(patientUID: string, records: Records){

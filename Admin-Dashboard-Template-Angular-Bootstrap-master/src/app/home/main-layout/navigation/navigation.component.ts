@@ -1,13 +1,17 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 //import{ AngularFireDatabase} from 'angularfire2/database';
-import { Observable } from 'rxjs';
+//import { Observable } from 'rxjs';
 
 //import { User } from 'src/app/shared/models/user';
 //import { UserService } from 'src/app/shared/services/user.service';
 //import { AngularFireObject } from 'angularfire2/database';
 import * as jspdf from 'jspdf';
 import { RecordsService } from 'src/app/shared/services/records.service';
+//import { VirtualTimeScheduler } from 'rxjs';
+//import { RecordsComponent } from '../../views/records/records.component';
+//import { RecordsComponent } from '../../views/records/records.component';
+//import { HttpClient } from '@angular/common/http';
 //import html2canvas from 'html2canvas';
 //import jsPDF = require('jspdf');
 //import { Ng2ImgMaxService } from 'ng2-img-max';
@@ -19,59 +23,69 @@ import { RecordsService } from 'src/app/shared/services/records.service';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+
   @ViewChild('sidenav', {static: true}) sidenav: ElementRef;
 
   //years = ['1999', '2004', '2019'];
   clicked: boolean;
   resizedImage: Blob;
   name:string;
-  years:Observable<any[]>;
+  years:any;
+  static selectedYear: any;
+  patientUID: string;
  
   // TODO: Need to fix the click effect of years
   
   constructor(
     private router: Router,
-    private recordService: RecordsService
+    private recordService: RecordsService,
+    //private recordsComponent: RecordsComponent,
   ) {
     this.clicked = this.clicked === undefined ? false : true;
     this.name = "Akhilesh";
-    //this.years = this.getAllYears();
-    //af.list('/years/'+this.name).snapshotChanges();
-    //console.log(this.years);
-//this.years=['199'];
-    //this.user = new User();
-    //this.insertImage();
+    this.setPatientUID("rTHDf5bLW0SjpMAndIAOxQEXxgB3");
+    this.getYears();
   }
-  getSelectedyear(year:any){
-    console.log(year)
+
+  onSelectedYear(year: any){
+    this.setSelectedyear(year).then(_res =>{
+      console.log(NavigationComponent.selectedYear);
+      //this.recordsComponent.getMedicalRecords(year, this.patientUID);
+      this.router.navigate(['/home/records']);
+    });
+    //this.router.navigate(['records']);
+  }
+    
+  getSelectedyear(){
+    return NavigationComponent.selectedYear;
+  }
+
+  setSelectedyear(year: number){
+    NavigationComponent.selectedYear = year;
+    return new Promise((resolve, _error)=>{
+      resolve();
+    });
+    //this.router.navigate(['../views/records']);
   }
   
-  getAllYears(){
-    console.log(this.recordService.getAllYears("rTHDf5bLW0SjpMAndIAOxQEXxgB3"));
-    //console.log(y);
-    //return y;
+  getYears(){
+    this.years = this.recordService.getAllYears(this.getPatientUID());
+    //console.log(this.years);
+  }
+
+  getPatientUID(){
+    return this.patientUID;
+  }
+
+  setPatientUID(id: string){
+    this.patientUID = id;
   }
 
   ngOnInit() {
-    // const x = this.userService.getUserById("Lp9aqaY9Xwk8zJr4FyT");
-    // x.snapshotChanges().subscribe(
-		// 	(user) => {
-		// 		// this.spinnerService.hide();
-		// 		const y = user.payload.toJSON() as User;
-
-		// 		y['$key'] = "Lp9aqaY9Xwk8zJr4FyT";
-		// 		this.user = y;
-		// 	},
-		// 	(_error) => {
-		// 		console.log('Error while fetching Product Detail');
-		// 	}
-    // );
-   
   }
 
   setClicked(val: boolean): void {
     this.clicked = val;
-    
   }
  
   navigateToPage(page: string){
@@ -86,7 +100,7 @@ export class NavigationComponent implements OnInit {
   pdfGen(){
     const pdf = new jspdf('p', 'mm', 'a4');
        
-        pdf.save('Test.pdf'); // Generated PDF
+        pdf.save('Akhilesh.pdf'); // Generated PDF
 		
   }
 

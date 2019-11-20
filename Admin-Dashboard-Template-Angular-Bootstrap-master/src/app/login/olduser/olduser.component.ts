@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
+//import { AngularFireAuth } from 'angularfire2/auth';
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
 //import { toast } from 'angular2-materialize';
 //import { ToastrService } from 'ngx-toastr';
@@ -45,7 +46,7 @@ show:boolean;
 
   constructor(
     private userService: UserService,
-    
+ 
     //public toastr: ToastrService,
     //private router: Router
   ) { 
@@ -53,6 +54,7 @@ show:boolean;
     //this.uid = '-1';
   }
   ngOnInit(){
+    
     }
   newUser(){
     this.router.navigateByUrl('../../login/newuser');

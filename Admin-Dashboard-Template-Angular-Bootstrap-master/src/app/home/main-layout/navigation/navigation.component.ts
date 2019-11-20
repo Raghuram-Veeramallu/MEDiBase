@@ -50,8 +50,8 @@ export class NavigationComponent implements OnInit {
 
   onSelectedYear(year: any){
     this.setSelectedyear(year).then(_res =>{
-      //console.log(NavigationComponent.selectedYear);
       localStorage.setItem("selectedYear", year);
+      console.log(localStorage.getItem("selectedYear"));
       //this.recordsComponent.getMedicalRecords(year, this.patientUID);
       this.router.navigate(['/home/records']);
     });

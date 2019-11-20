@@ -20,7 +20,8 @@ export class RecordsComponent implements OnInit {
      private recordService: RecordsService,
      //private navigationComp: NavigationComponent
   ) {
-     this.getMedicalRecords();
+    console.log("Hello");
+    this.getMedicalRecords();
      console.log(localStorage.getItem("selectedYear"));
      //console.log(this.records);
      //console.log(this.navigationComp.getSelectedyear());
@@ -30,7 +31,7 @@ export class RecordsComponent implements OnInit {
   getMedicalRecords(){
     console.log(Number(localStorage.getItem("selectedYear")));
     console.log(String(localStorage.getItem("patientUID")));
-    const x = this.recordService.getRecordPerYear(String(localStorage.getItem("patientUID")), Number(localStorage.getItem("selectedYear")));
+    this.records = this.recordService.getRecordPerYear(String(localStorage.getItem("patientUID")), Number(localStorage.getItem("selectedYear")));
     //x.subscribe()
   }
 

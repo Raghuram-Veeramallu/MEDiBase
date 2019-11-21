@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
+//import { UidService } from '../shared/services/uid.services';
 //import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private location: Location,
-    
+    //private uidService: UidService
     //private httpClient: HttpClient
     ) {
         this.router.events.subscribe((route:any) => {

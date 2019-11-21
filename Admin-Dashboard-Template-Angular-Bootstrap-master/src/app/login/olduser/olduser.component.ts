@@ -7,11 +7,15 @@ import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import{UidService} from "../../shared/services/uid.services";
+//import { HttpClient } from '@angular/common/http';
+//import { map } from 'rxjs/internal/operators/map';
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
 //import { toast } from 'angular2-materialize';
 //import { ToastrService } from 'ngx-toastr';
 
 /// <reference path ="../typings/jquery/jquery.d.ts"/>
+
+var uID:any;
 
 @Component({
   selector: 'app-olduser',
@@ -47,12 +51,13 @@ shows:boolean;
 
   constructor(
     private userService: UserService,
-    private UidService:UidService
+    private uidService:UidService,
+    //private httpClient: HttpClient
     //public toastr: ToastrService,
     //private router: Router
   ) {
     this.userName = '';
-    this.UidService.setUid("ap354@snu.edu.in");
+    this.uidService.setUid("ap354@snu.edu.in");
     //this.uid = '-1';
   }
   ngOnInit(){
@@ -72,6 +77,11 @@ shows:boolean;
 
 
   verifyFace(){
+    this.sendToServer();
+  }
+
+
+  async sendToServer(){
     this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp\"\r\n}"
     var settings = {
       "async": true,
@@ -95,19 +105,20 @@ shows:boolean;
       var m = response;
       console.log(JSON.stringify(m).indexOf("success"));
       if(JSON.stringify(m).indexOf("success") > -1) {
-        
+        //this.uidService
           console.log(m.images[0].candidates[0].subject_id);
-         
+          uID = m.images[0].candidates[0].subject_id;
           //this.uid = m.images[0].candidates[0].subject_id;
       }
       else{
           console.log("Failure");
       }
+      console.log(uID);
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
     });
 
-    //console.log(this.uid);
+    console.log(uID);
 
   }
 

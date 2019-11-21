@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
@@ -20,12 +20,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class CardComponent implements OnInit {
-  title:"";
-  date:"";
-  medicine:"";
-  type:"";
-  course:"";
-  cday:"";
+  // title:"";
+  // date:"";
+  // medicine:"";
+  // type:"";
+  // course:"";
+  // cday:"";
+  @Input() title: string;
   constructor() { }
 
   ngOnInit() {

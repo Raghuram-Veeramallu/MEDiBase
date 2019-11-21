@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 //import { Records } from '../models/medicalRecords';
-import { map } from 'rxjs/operators';
+//import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -10,7 +10,7 @@ export class RecordsService {
 
     //private records: Array<Records>;
     //private yearlyRecords: Records;
-    private years: any;
+    //private years: Object;
 
     constructor(
         private httpClient: HttpClient
@@ -25,39 +25,21 @@ export class RecordsService {
     //     })
     // }
 
-    getRecordPerYear(patientUID: string, year: number){
+    getRecordPerYear(id: string, yr: number){
         var posting = {
-            patientUID: patientUID,
-            year: year
+            patientUID: id,
+            year: yr
         }
-        this.httpClient.post("http://localhost:3000/api/allYears/", posting).pipe(map(data => {
-            this.years = data;
-            //console.log(this.years);
-        })).subscribe((res) => {
-            console.log(res);
-            //this.years = res;
-            return this.years;
-            //this.years = this.years[0].all_years;
-        });
-        //console.log(this.years);
-        return this.years;
+        const url = `http://localhost:3000/api/patientRecords/`;
+        return this.httpClient.post(url, posting);
     }
 
-    getAllYears(patientUID: string){
+    getAllYears(id: string){
         var posting = {
-            patientUID: patientUID
+            patientUID: id
         }
-        this.httpClient.post("http://localhost:3000/api/allYears/", posting).pipe(map(data => {
-            this.years = data;
-            //console.log(this.years);
-        })).subscribe((res) => {
-            console.log(res);
-            //this.years = res;
-            return this.years;
-            //this.years = this.years[0].all_years;
-        });
-        //console.log(this.years);
-        return this.years;
+        const url = `http://localhost:3000/api/allYears/`;
+        return this.httpClient.post(url, posting);
     }
 
     // createRecord(patientUID: string, records: Records){

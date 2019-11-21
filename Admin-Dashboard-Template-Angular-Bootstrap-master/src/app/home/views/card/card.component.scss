@@ -24,8 +24,8 @@
   
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-  
-        color: #fff;
+        color: aqua;
+        
         text-align: center;
         line-height: 100px;
         font-size: 24px;
@@ -37,13 +37,13 @@
                 user-select: none;
       }
       .tp-box__front {
-        background:white;
+        background:aqua;
         -webkit-transform : rotateY(0deg);
         -ms-transform     : rotateY(0deg);
         transform         : rotateY(0deg);
       }
       .tp-box__back {
-        background: white;
+        background: aqua;
         -webkit-transform : rotateY(-180deg);
         -ms-transform     : rotateY(-180deg);
         transform         : rotateY(-180deg);

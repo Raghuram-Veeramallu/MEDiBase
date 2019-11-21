@@ -38,6 +38,7 @@ export class OlduserComponent implements OnInit {
 
   private datad: any;
 show:boolean;
+shows:boolean;
   uid: string;
   private userName: string;
   private router: Router;
@@ -88,13 +89,15 @@ show:boolean;
 
     }
 
-
+    this.shows=true;
 
     $.ajax(settings).done(function (response) {
       var m = response;
       console.log(JSON.stringify(m).indexOf("success"));
       if(JSON.stringify(m).indexOf("success") > -1) {
+        
           console.log(m.images[0].candidates[0].subject_id);
+         
           //this.uid = m.images[0].candidates[0].subject_id;
       }
       else{

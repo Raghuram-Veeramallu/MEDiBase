@@ -30,7 +30,7 @@ export class RecordsService {
             patientUID: id,
             year: yr
         }
-        const url = `http://+localhost:3000/api/patientRecords/`;
+        const url = `http://10.6.15.177:3000/api/patientRecords/`;
         return this.httpClient.post(url, posting);
     }
 
@@ -38,15 +38,15 @@ export class RecordsService {
         var posting = {
             patientUID: id
         }
-        const url = `http://localhost:3000/api/allYears/`;
+        const url = `http://10.6.15.177:3000/api/allYears/`;
         return this.httpClient.post(url, posting);
     }
 
     // createRecord(patientUID: string, records: Records){
 
     // }
-    
-    
+
+
 
 
 }

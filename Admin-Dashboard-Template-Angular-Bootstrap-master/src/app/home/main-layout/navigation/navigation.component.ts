@@ -35,40 +35,8 @@ export class NavigationComponent implements OnInit {
   ) {
     this.clicked = this.clicked === undefined ? false : true;
     this.name = "Akhilesh";
-<<<<<<< HEAD
-    this.setPatientUID("rTHDf5bLW0SjpMAndIAOxQEXxgB3");
-    localStorage.setItem("patientUID", "rTHDf5bLW0SjpMAndIAOxQEXxgB3");
-    this.getYears();
-  }
-
-  onSelectedYear(year: any){
-    this.setSelectedyear(year).then(_res =>{
-      localStorage.setItem("selectedYear", year);
-      console.log(localStorage.getItem("selectedYear"));
-      //this.recordsComponent.getMedicalRecords(year, this.patientUID);
-      this.router.navigate(['/home/records']);
-    });
-    //this.router.navigate(['records']);
-  }
-    
-  getSelectedyear(){
-    return NavigationComponent.selectedYear;
-  }
-
-  setSelectedyear(year: number){
-    NavigationComponent.selectedYear = year;
-    return new Promise((resolve, _error)=>{
-      resolve();
-    });
-    //this.router.navigate(['../views/records']);
-  }
-  
-  getYears(){
-    this.years = this.recordService.getAllYears(this.getPatientUID());
-=======
     //this.years = this.getAllYears();
     //af.list('/years/'+this.name).snapshotChanges();
->>>>>>> parent of 4d65440... Merge branch 'master' of https://github.com/Raghuram-Veeramallu/DocDocx_IWSProject
     //console.log(this.years);
 //this.years=['199'];
     //this.user = new User();

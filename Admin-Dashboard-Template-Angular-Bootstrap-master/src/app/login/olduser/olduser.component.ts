@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input} from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 // import { Observable } from 'rxjs/internal/Observable';
 //import { map } from 'rxjs/operators';
@@ -43,6 +43,7 @@ export class OlduserComponent implements OnInit {
   private datad: any;
 show:boolean;
 shows:boolean;
+@Input() name:string;
   uid: string;
   private userName: string;
   private router: Router;
@@ -100,14 +101,14 @@ shows:boolean;
     }
 
     this.shows=true;
-
+//this.name="Akhilesh";
     $.ajax(settings).done(function (response) {
       var m = response;
       console.log(JSON.stringify(m).indexOf("success"));
       if(JSON.stringify(m).indexOf("success") > -1) {
         //this.uidService
           console.log(m.images[0].candidates[0].subject_id);
-          uID = m.images[0].candidates[0].subject_id;
+          //this.name= m.images[0].candidates[0].subject_id;
           //this.uid = m.images[0].candidates[0].subject_id;
       }
       else{

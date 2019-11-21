@@ -2,12 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 //import{ AngularFireDatabase} from 'angularfire2/database';
 //import { Observable } from 'rxjs';
-
+import{UidService} from "../../../shared/services/uid.services";
 //import { User } from 'src/app/shared/models/user';
 //import { UserService } from 'src/app/shared/services/user.service';
 //import { AngularFireObject } from 'angularfire2/database';
 import * as jspdf from 'jspdf';
 import { RecordsService } from 'src/app/shared/services/records.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 //import { VirtualTimeScheduler } from 'rxjs';
 //import { RecordsComponent } from '../../views/records/records.component';
 //import { RecordsComponent } from '../../views/records/records.component';
@@ -33,14 +34,28 @@ export class NavigationComponent implements OnInit {
   years:any;
   static selectedYear: any;
   patientUID: string;
+  patient:"";
+  age:"";
+  gender:""
  
   // TODO: Need to fix the click effect of years
   
   constructor(
     private router: Router,
     private recordService: RecordsService,
+    private UidService:UidService,private db: AngularFireDatabase
     //private recordsComponent: RecordsComponent,
   ) {
+    this.db.database.ref('/users').orderByChild('email').equalTo(this.UidService.getUid())
+    .once('value')
+  .then(dataSnapshot => {
+    if(dataSnapshot.val()) {
+      var dataObj = dataSnapshot.val();
+this.patient=dataObj[Object.keys(dataObj)[0]].name;
+this.age=dataObj[Object.keys(dataObj)[0]].age;
+this.gender=dataObj[Object.keys(dataObj)[0]].gender;
+
+     }});
     this.clicked = this.clicked === undefined ? false : true;
     this.name = "Akhilesh";
     this.setPatientUID("rTHDf5bLW0SjpMAndIAOxQEXxgB3");

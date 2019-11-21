@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from "../../app/shared/services/toastr.service";
 //import { RecordsService } from '../shared/services/records.service';
 
-import { AngularFireDatabase,  } from "angularfire2/database";
+import { AngularFireDatabase  } from "angularfire2/database";
 
 import { UserService } from 'src/app/shared/services/user.service';
 

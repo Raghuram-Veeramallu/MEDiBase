@@ -23,7 +23,7 @@ var appRouter = function(app) {
         return res.status(400).send(error);
         console.log(error);
       }
-      res.send(result[0].records);
+      res.send(result[0].lessons);
     });
   });
 

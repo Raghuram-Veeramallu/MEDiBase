@@ -1,5 +1,12 @@
 <div class="row">
-    <app-card *ngFor="let card of cards" [title]="card.title"></app-card>
+    <app-card *ngFor="let record of records" 
+    [title]="record.institute_name" 
+    [date]="record.date_of_visit"
+    [medicine]="record.prescription[0].medication"
+    [type]="record.prescription[0].type"
+    [course]="record.prescription[0].duration"
+    [cday]="record.prescription[0].doseage">
+</app-card>
 
     <!-- <div *ngFor="let record of records | async">
               

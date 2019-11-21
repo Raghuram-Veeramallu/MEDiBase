@@ -9,7 +9,7 @@ export class FacilityIDService {
     getFacilityID(){
         return this.facilityId;
     }
-    setYear(id: string){
+    setFacilityID(id: string){
         this.facilityId = id;
     }
 }

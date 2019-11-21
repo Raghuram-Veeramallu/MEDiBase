@@ -20,6 +20,7 @@ import { RecordsService } from './services/records.service';
 import { UidService } from './services/uid.services';
 import { SelectedYearService } from './services/selectedYear.service';
 import { FacilityIDService } from './services/facilityId.service';
+import { RecordRetrival } from './services/recordRetrival.service';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { FacilityIDService } from './services/facilityId.service';
     FormsModule
   ],
   providers: [
-    UserService, FormBuilder, RecordsService, UidService, SelectedYearService, FacilityIDService
+    UserService, FormBuilder, RecordsService, UidService, SelectedYearService, FacilityIDService, RecordRetrival
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })

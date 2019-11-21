@@ -5,7 +5,9 @@
     [medicine]="record.prescription[0].medication"
     [type]="record.prescription[0].type"
     [course]="record.prescription[0].duration"
-    [cday]="record.prescription[0].doseage">
+    [cday]="record.prescription[0].doseage"
+    [symptoms]="record.problems[0].symptom"
+    [condition]="record.diagnosis[0].condition">
 </app-card>
 
     <!-- <div *ngFor="let record of records | async">

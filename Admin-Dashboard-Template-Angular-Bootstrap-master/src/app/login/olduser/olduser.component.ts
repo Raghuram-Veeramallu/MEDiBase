@@ -121,7 +121,8 @@ export class OlduserComponent implements OnInit {
           console.log("Failure");
       }
       console.log(this.uid);
-     
+      this.uidService.setUid(this.uid);
+      //console.log(this.UidService.getUid());
       (document.getElementById('nameField') as HTMLButtonElement).innerHTML = this.uid;
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;

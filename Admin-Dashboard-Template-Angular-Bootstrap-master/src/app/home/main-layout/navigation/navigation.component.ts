@@ -9,6 +9,7 @@ import{UidService} from "../../../shared/services/uid.services";
 import * as jspdf from 'jspdf';
 import { RecordsService } from 'src/app/shared/services/records.service';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { SelectedYearService } from 'src/app/shared/services/selectedYear.service';
 //import { VirtualTimeScheduler } from 'rxjs';
 //import { RecordsComponent } from '../../views/records/records.component';
 //import { RecordsComponent } from '../../views/records/records.component';
@@ -32,7 +33,7 @@ export class NavigationComponent implements OnInit {
   resizedImage: Blob;
   name:string;
   years:any;
-  static selectedYear: any;
+  selectedYear: any;
   patientUID: string;
   patient:"";
   age:"";
@@ -43,30 +44,33 @@ export class NavigationComponent implements OnInit {
   constructor(
     private router: Router,
     private recordService: RecordsService,
-    private UidService:UidService,private db: AngularFireDatabase
+    private UidService:UidService,
+    private db: AngularFireDatabase,
+    private selectedYrSrv: SelectedYearService
     //private recordsComponent: RecordsComponent,
   ) {
     this.db.database.ref('/users').orderByChild('email').equalTo(this.UidService.getUid())
     .once('value')
-  .then(dataSnapshot => {
-    if(dataSnapshot.val()) {
-      var dataObj = dataSnapshot.val();
-this.patient=dataObj[Object.keys(dataObj)[0]].name;
-this.age=dataObj[Object.keys(dataObj)[0]].age;
-this.gender=dataObj[Object.keys(dataObj)[0]].gender;
+    .then(dataSnapshot => {
+      if(dataSnapshot.val()) {
+        var dataObj = dataSnapshot.val();
+        this.patient=dataObj[Object.keys(dataObj)[0]].name;
+        this.age=dataObj[Object.keys(dataObj)[0]].age;
+        this.gender=dataObj[Object.keys(dataObj)[0]].gender;
 
      }});
     this.clicked = this.clicked === undefined ? false : true;
     this.name = "Akhilesh";
-    this.setPatientUID("rTHDf5bLW0SjpMAndIAOxQEXxgB3");
-    localStorage.setItem("patientUID", "rTHDf5bLW0SjpMAndIAOxQEXxgB3");
+    this.setPatientUID(this.UidService.getUid());
+    //localStorage.setItem("patientUID", "rTHDf5bLW0SjpMAndIAOxQEXxgB3");
     this.getYears();
   }
 
   onSelectedYear(year: any){
     this.setSelectedyear(year).then(_res =>{
-      localStorage.setItem("selectedYear", year);
-      console.log(localStorage.getItem("selectedYear"));
+      this.selectedYrSrv.setYear(Number(year));
+      //localStorage.setItem("selectedYear", year);
+      //console.log(localStorage.getItem("selectedYear"));
       //this.recordsComponent.getMedicalRecords(year, this.patientUID);
       this.router.navigate(['/home/records']);
     });
@@ -74,11 +78,11 @@ this.gender=dataObj[Object.keys(dataObj)[0]].gender;
   }
     
   getSelectedyear(){
-    return NavigationComponent.selectedYear;
+    return this.selectedYear;
   }
 
   setSelectedyear(year: number){
-    NavigationComponent.selectedYear = year;
+    this.selectedYear = year;
     return new Promise((resolve, _error)=>{
       resolve();
     });

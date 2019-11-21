@@ -1,6 +1,4 @@
 <div class="row">
-    <div *ngFor="let record of records | async">
-        <app-card [title]="record.date_of_visit"></app-card>
-    </div>
+    <app-card *ngFor="let card of cards" [title]="card.title"></app-card>
 </div>
 <!-- [title]="card.title" -->

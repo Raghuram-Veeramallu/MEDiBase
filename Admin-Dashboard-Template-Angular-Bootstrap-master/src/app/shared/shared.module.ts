@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from "./services/user.service";
 import { RecordsService } from './services/records.service';
 import { UidService } from './services/uid.services';
+import { SelectedYearService } from './services/selectedYear.service';
 
 
 @NgModule({
@@ -50,7 +51,7 @@ import { UidService } from './services/uid.services';
     FormsModule
   ],
   providers: [
-    UserService, FormBuilder, RecordsService, UidService
+    UserService, FormBuilder, RecordsService, UidService, SelectedYearService
   ],
   schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA]
 })

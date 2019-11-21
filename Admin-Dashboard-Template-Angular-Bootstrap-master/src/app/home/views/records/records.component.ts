@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-//import { Records } from 'src/app/shared/models/medicalRecords';
 import { RecordsService } from 'src/app/shared/services/records.service';
-//import { NavigationComponent } from '../../main-layout/navigation/navigation.component';
+import { UidService } from 'src/app/shared/services/uid.services';
+import { SelectedYearService } from 'src/app/shared/services/selectedYear.service';
+//import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-records',
@@ -14,29 +15,25 @@ export class RecordsComponent implements OnInit {
 
   records: any;
 
-  //cards = [{ id: 1, title: 'First Card'}, { id: 2, title: 'Second Card'}, { id: 3, title: 'Third Card'}];
+  cards = [{ title: 'First Card'}, { title: 'Second Card'}, { title: 'Third Card'}];
   
   constructor(
      private recordService: RecordsService,
-     //private navigationComp: NavigationComponent
+     private uidService: UidService,
+     private selectedYrSrv: SelectedYearService,
+     //private cardComponent: CardComponent
   ) {
-    console.log("Hello");
-    this.getMedicalRecords();
-     console.log(localStorage.getItem("selectedYear"));
-     //console.log(this.records);
-     //console.log(this.navigationComp.getSelectedyear());
-     //this.getMedicalRecords(this.navigationComp.getSelectedyear(), this.navigationComp.getPatientUID());
+      this.getMedicalRecords();
+      console.log(this.selectedYrSrv.getYear());
   }
 
   getMedicalRecords(){
-    console.log(Number(localStorage.getItem("selectedYear")));
-    console.log(String(localStorage.getItem("patientUID")));
-    this.records = this.recordService.getRecordPerYear(String(localStorage.getItem("patientUID")), Number(localStorage.getItem("selectedYear")));
-    //x.subscribe()
+    this.records = this.recordService.getRecordPerYear(this.uidService.getUid(), this.selectedYrSrv.getYear());
+    //this.cardComponent.cday=this.records.;
+    console.log(this.records);
   }
 
   ngOnInit() {
-    console.log(Number(localStorage.getItem("selectedYear")));
     this.getMedicalRecords();
   }
 

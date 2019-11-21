@@ -7,8 +7,8 @@ import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import{UidService} from "../../shared/services/uid.services";
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/internal/operators/map';
+//import { HttpClient } from '@angular/common/http';
+//import { map } from 'rxjs/internal/operators/map';
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
 //import { toast } from 'angular2-materialize';
 //import { ToastrService } from 'ngx-toastr';
@@ -52,7 +52,7 @@ shows:boolean;
   constructor(
     private userService: UserService,
     private uidService:UidService,
-    private httpClient: HttpClient
+    //private httpClient: HttpClient
     //public toastr: ToastrService,
     //private router: Router
   ) {

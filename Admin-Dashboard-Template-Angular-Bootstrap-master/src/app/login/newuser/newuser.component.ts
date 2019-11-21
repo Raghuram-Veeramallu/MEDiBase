@@ -60,13 +60,14 @@ gend:string;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
       console.log(user.uid);
+      
         // User is signed in.
       } else {
         // No user is signed in.
       }
     });
+    this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
     
-    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
     }
   
   ngOnInit(){
@@ -133,9 +134,9 @@ gend:string;
 
 
 
-  addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){
+  addUser(aadhar: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){
     var user = new User();
-    user.uid = uid;
+    user.aadhar = aadhar;
     user.name = name;
     user.mobile = mobile;
     user.blood=blood;
@@ -145,6 +146,7 @@ gend:string;
     user.location=location;
     user.age=age;
     user.email=email;
+    
     this.userService.createUser(user);
   }
 

@@ -10,4 +10,5 @@ export class User{
   location:string;
   age: string;
   email: string;
+  aadhar: string;
 }

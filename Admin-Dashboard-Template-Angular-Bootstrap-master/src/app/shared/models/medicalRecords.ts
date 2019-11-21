@@ -1,7 +1,10 @@
 
 export class Prescription{
   medication: string;
+  type:string;
   doseage: string;
+  duration:string;
+  
 }
 
 export class Diagnosis{
@@ -11,7 +14,7 @@ export class Diagnosis{
 
 export class Problem{
   symptom: string;
-  allergy: string;
+  
 }
 
 export class Record{

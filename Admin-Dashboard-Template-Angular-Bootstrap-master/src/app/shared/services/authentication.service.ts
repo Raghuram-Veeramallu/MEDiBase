@@ -15,11 +15,25 @@ constructor(private angularFireAuth: AngularFireAuth) {
  
 /* Sign up */
 SignUp(email: string, password: string) {
+    this.angularFireAuth
+.auth
+.signOut();
+    
 this.angularFireAuth
 .auth
 .createUserWithEmailAndPassword(email, password)
 .then(res => {
 console.log('You are Successfully signed up!', res);
+this.angularFireAuth
+    .auth
+    .signInWithEmailAndPassword(email, password)
+    .then(_res => {
+    console.log('You are Successfully logged in!');
+   // console.log(this.angularFireAuth.auth.currentUser);
+    })
+    .catch(err => {
+    console.log('Something is wrong:',err.message);
+    });
 })
 .catch(error => {
 console.log('Something is wrong:', error.message);

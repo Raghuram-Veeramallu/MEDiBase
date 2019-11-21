@@ -7,7 +7,7 @@ import { User } from 'src/app/shared/models/user';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
- 
+
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
 
@@ -30,13 +30,13 @@ export class NewuserComponent implements OnInit {
   uid: string;
   isShow=false;
 gend:string;
-  
+
   constructor(
     private userService: UserService,
     private authenticationService:AuthenticationService
-    
+
     //private http: HttpClient
-  ) { 
+  ) {
   }
   institutes = {
     patient: '',
@@ -55,40 +55,42 @@ gend:string;
     }
   instituteLogins(instaForm: NgForm){
     console.log("Entered new patient");
-    
+
     console.log(instaForm.value);
     this.authenticationService.SignUp(this.institutes.email,"123456");
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        console.log(user.uid);
+      console.log(user.uid);
+
+        // User is signed in.
       } else {
 
       }
     });
-    
-    this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
+    this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
+
     }
-  
+
   ngOnInit(){
   //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);
   }
- 
+
   public ngAfterViewInit() {
-    
+
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
             this.video.nativeElement.srcObject = stream;
             this.video.nativeElement.play();
 
         });
-    
+
       }
-      
+
   }
-  
+
    public try()
    {
-    this.isShow=!this.isShow; 
+    this.isShow=!this.isShow;
    }
    public leave(){
     this.router.navigateByUrl('http://localhost:4200/home/dashboard');
@@ -97,7 +99,7 @@ gend:string;
   public capture() {
     //console.log(uidT);
   //check
-  
+
     this.isShow=!this.isShow;
     var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
     //uid = "270724743647";
@@ -127,15 +129,15 @@ gend:string;
           console.log("failure");
       }
     });
-    
+
 
   }
 
 
 
-  addUser(uid: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){
+  addUser(aadhar: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){
     var user = new User();
-    user.uid = uid;
+    user.aadhar = aadhar;
     user.name = name;
     user.mobile = mobile;
     user.blood=blood;
@@ -145,6 +147,7 @@ gend:string;
     user.location=location;
     user.age=age;
     user.email=email;
+
     this.userService.createUser(user);
   }
 

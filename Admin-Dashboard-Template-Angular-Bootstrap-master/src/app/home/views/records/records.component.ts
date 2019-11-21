@@ -29,6 +29,8 @@ export class RecordsComponent implements OnInit {
 
   getMedicalRecords(){
     this.records = this.recordService.getRecordPerYear(this.uidService.getUid(), this.selectedYrSrv.getYear());
+    //this.records
+    //console.log(this.records[0].institute_name);
     //this.cardComponent.cday=this.records.;
     console.log(this.records);
   }

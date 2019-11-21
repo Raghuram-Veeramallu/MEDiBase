@@ -1,4 +1,12 @@
 <div class="row">
     <app-card *ngFor="let card of cards" [title]="card.title"></app-card>
+
+    <!-- <div *ngFor="let record of records | async">
+              
+        <ul>
+            <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{record.institute_name}}
+        </ul>
+                
+    </div> -->
 </div>
 <!-- [title]="card.title" -->

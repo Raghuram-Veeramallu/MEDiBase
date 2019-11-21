@@ -21,7 +21,7 @@ RecordModel.getAllDetails = function(patientUID, callback) {
 };
 
 RecordModel.getPatientRecords = function(patientUID, year , callback){
-  var statement = 'select years[0].records from `' + config.couchbase.bucket + '` use keys "' + patientUID + '" where any yr in ' + config.couchbase.bucket + '.years satisfies yr.year = ' + year + ' end;';
+  var statement = 'select years[0].lessons from `' + config.couchbase.bucket + '` use keys "' + patientUID + '" where any yr in ' + config.couchbase.bucket + '.years satisfies yr.year = ' + year + ' end;';
   var query = N1qlQuery.fromString(statement);
   db.query(query, function(error, result) {
     if (error) {

@@ -41,7 +41,8 @@ export class OlduserComponent implements OnInit {
   public image: any;
 
   private datad: any;
-  show:boolean;
+show:boolean;
+shows:boolean;
   uid: string;
   private userName: string;
   private router: Router;
@@ -96,7 +97,9 @@ export class OlduserComponent implements OnInit {
       "processData": false,
       "data": this.datad
 
-    }   
+    }
+
+    this.shows=true;
 
     $.ajax(settings).done(function (response) {
       var m = response;

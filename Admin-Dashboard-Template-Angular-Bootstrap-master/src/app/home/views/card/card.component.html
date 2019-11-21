@@ -1,15 +1,18 @@
 <div class="tp-wrapper">
 	<div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
 		<div class="tp-box__side tp-box__front">
-            <label style="color: white;">{{title}}</label>
-            <label style="color: white;">{{date}}</label>
+            <label style="color: black;font-size: 24px;text-align: center;">{{title}}</label>
+            <label style="color: aqua;font-size: 20px;text-align: center;">{{date}}</label>
 		</div>
 		<div class="tp-box__side tp-box__back">
-            <label style="color: white;">Prescription</label>
-            <label style="color: white;">{{medicine}}</label>
-            <label style="color: white;">{{type}}</label>
-            <label style="color: white;">{{course}}</label>
-            <label style="color: white;"> {{cday}}</label>
+            <label style="color: black;font-size: 26px;text-align: center;">Your Prescription</label>
+            <label style="color: black;font-size: 24px;text-align: center;">{{medicine}}</label>
+            <label style="color: aqua;font-size: 20px;">{{type}}</label>
+            <label style="color: black;font-size: 24px;">Duration</label>
+            <label style="color: black;font-size: 24px;display: inline;">Pills per day</label>
+            <label style="color: aqua;font-size: 20px;">{{course}}</label>
+            
+            <label style="color: aqua;font-size: 20px;display: inline;"> {{cday}}</label>
 		</div>
 	</div>
 </div>

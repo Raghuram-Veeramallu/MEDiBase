@@ -10,6 +10,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
+import { UidService } from 'src/app/shared/services/uid.services';
+//import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-newuser',
@@ -25,15 +27,18 @@ export class NewuserComponent implements OnInit {
   public canvas: ElementRef;
 
   public image: any;
-  private router:Router;
+  //private router:Router;
   private datad: string;
   uid: string;
   isShow=false;
 gend:string;
 
   constructor(
+    private router: Router,
     private userService: UserService,
-    private authenticationService:AuthenticationService
+    private authenticationService:AuthenticationService,
+    private uidService: UidService
+     //appComp: AppComponent
 
     //private http: HttpClient
   ) {
@@ -62,16 +67,18 @@ gend:string;
       if (user) {
       console.log(user.uid);
         //this.uid = user.uid;
+        //this.appComp.setUid();
+
         sessionStorage.setItem("patientUID", user.uid);
         // User is signed in.
-      } else {
-
-      }
+      } else {}
     });
     console.log(sessionStorage.getItem("patientUID"));
+    this.uidService.setUid(instaForm.value["email"]);
     this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
-
-    }
+    this.sendToServer();
+    this.router.navigate(['/home/dashboard']);
+  }
 
   ngOnInit(){
   //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);
@@ -98,16 +105,9 @@ gend:string;
     this.router.navigateByUrl('http://localhost:4200/home/dashboard');
     //routerLink="../../home/dashboard"
    }
-  public capture() {
-    //console.log(uidT);
-  //check
 
-    this.isShow=!this.isShow;
-    var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
-    //uid = "270724743647";
-    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0,360, 240);
-    this.image = this.canvas.nativeElement.toDataURL("image/png");
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + uid + "\",\r\n    \"gallery_name\":\"ge\"\r\n}";
+   public sendToServer(){
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + sessionStorage.getItem("patientUID") + "\",\r\n    \"gallery_name\":\"temp\"\r\n}";
     const settings = {
       "async": true,
       "crossDomain": true,
@@ -115,8 +115,8 @@ gend:string;
       "method": "POST",
       "headers": {
           "content-type": "application/json",
-          "app_id": "731a6b91",
-          "app_key": "dfcfe5f1dc7702d10842523844233761",
+          "app_id": "744ed0da",
+          "app_key": "291ab2350e2e88feca76ac97e6dfafa6",
           "cache-control": "no-cache"
       },
       "processData": false,
@@ -131,8 +131,14 @@ gend:string;
           console.log("failure");
       }
     });
-
-
+   }
+  
+  public capture() {
+    this.isShow=!this.isShow;
+    //var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
+    //uid = "270724743647";
+    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0,360, 240);
+    this.image = this.canvas.nativeElement.toDataURL("image/png");
   }
 
 

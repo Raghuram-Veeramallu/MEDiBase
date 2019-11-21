@@ -10,11 +10,28 @@ import { Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit {
   public hash: string;
 
+  public uid: string;
+  public selectedYear: number;
+  //public 
+
   constructor(
     //private httpClient: HttpClient
     ){
       //this.getData();
     }
+
+  getUid(){
+    return this.uid;
+  }
+  setUid(id: string){
+    this.uid = id;
+  }
+  getSelectedyear(){
+    return this.selectedYear;
+  }
+  setSelectedyear(yr: number){
+    this.selectedYear = yr;
+  }
 
   ngOnInit(){}
 

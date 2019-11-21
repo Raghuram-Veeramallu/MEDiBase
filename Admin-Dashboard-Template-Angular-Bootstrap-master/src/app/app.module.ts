@@ -41,7 +41,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth'
   ],
 
 
-  providers: [],
+  providers: [AppComponent],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
 })

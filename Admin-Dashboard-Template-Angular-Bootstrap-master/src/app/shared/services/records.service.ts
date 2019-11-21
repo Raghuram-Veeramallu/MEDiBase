@@ -30,7 +30,7 @@ export class RecordsService {
             patientUID: id,
             year: yr
         }
-        const url = `http://localhost:3000/api/patientRecords/`;
+        const url = `http://+localhost:3000/api/patientRecords/`;
         return this.httpClient.post(url, posting);
     }
 

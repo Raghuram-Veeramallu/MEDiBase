@@ -7,6 +7,22 @@ function RecordModel() { };
 
 //RecordModel.sampleAndroid = function()
 
+RecordModel.addRecords = function(patientUID, year, records, callback) {
+    //var statement = "SELECT META(users).id, firstname, lastname, email " +
+    //                "FROM `" + config.couchbase.bucket + "` AS users";
+    //insert into `medibase` (key, value) values ("rTHDf5bLW0SjpMAndIAOxQEXxgB3", {"year":"2009"});
+    var statement = 'INSERT INTO `' + config.couchbase.bucket + '` (key,value) values "' + patientUID + '";';
+    var query = N1qlQuery.fromString(statement);
+    db.query(query, function(error, result) {
+        if(error) {
+            return callback(error, null);
+        }
+        callback(null, result);
+    });
+};
+
+
+
 RecordModel.getAllDetails = function(patientUID, callback) {
     //var statement = "SELECT META(users).id, firstname, lastname, email " +
     //                "FROM `" + config.couchbase.bucket + "` AS users";
@@ -31,6 +47,7 @@ RecordModel.getPatientRecords = function(patientUID, year , callback){
     callback(null, result);
   });
 };
+
 
 RecordModel.getAllYears = function(patientUID, callback){
   var statement = 'select array yr.year for yr in ' + config.couchbase.bucket + '.years end as all_years from ' + config.couchbase.bucket + ' use keys "' + patientUID + '" where years is not null;';

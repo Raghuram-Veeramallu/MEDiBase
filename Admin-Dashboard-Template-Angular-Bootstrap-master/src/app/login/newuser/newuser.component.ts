@@ -73,7 +73,7 @@ export class NewuserComponent implements OnInit {
         //this.uid = user.uid;
         //this.appComp.setUid();
         //UidService.
-        sessionStorage.setItem("patientUID", user.uid);
+        //sessionStorage.setItem("patientUID", user.uid);
         // User is signed in.
       } else {}
     });

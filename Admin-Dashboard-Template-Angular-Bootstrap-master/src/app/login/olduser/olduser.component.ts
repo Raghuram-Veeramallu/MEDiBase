@@ -6,12 +6,12 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
-//import { UidService } from 'src/app/shared/services/uid.services';
+import{UidService} from "../../shared/services/uid.services";
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
 //import { toast } from 'angular2-materialize';
 //import { ToastrService } from 'ngx-toastr';
 
-/// <reference path ="../typings/jquery/jquery.d.ts"/> 
+/// <reference path ="../typings/jquery/jquery.d.ts"/>
 
 @Component({
   selector: 'app-olduser',
@@ -41,16 +41,17 @@ show:boolean;
   uid: string;
   private userName: string;
   private router: Router;
-  
+
   isDisable: boolean;
 
   constructor(
     private userService: UserService,
-    //private uidService: UidService
+    private UidService:UidService
     //public toastr: ToastrService,
     //private router: Router
-  ) { 
+  ) {
     this.userName = '';
+    this.UidService.setUid("ap354@snu.edu.in");
     //this.uid = '-1';
   }
   ngOnInit(){
@@ -58,7 +59,7 @@ show:boolean;
   newUser(){
     this.router.navigateByUrl('../../login/newuser');
   }
-  
+
   public ngAfterViewInit() {
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
@@ -84,10 +85,10 @@ show:boolean;
       },
       "processData": false,
       "data": this.datad
-     
+
     }
 
-    
+
 
     $.ajax(settings).done(function (response) {
       var m = response;
@@ -127,10 +128,10 @@ show:boolean;
     //   },
     //   "processData": false,
     //   "data": this.datad
-     
+
     // }
 
-    
+
 
     // $.ajax(settings).done(function (response) {
     //   var m = response;
@@ -151,7 +152,7 @@ show:boolean;
     // });
 
     //document.getElementById("uidField").innerHTML = 0;
-    //document.getElementById("uidField") 
+    //document.getElementById("uidField")
     // this.execApi().then(_res => {
     //   console.log("f2");
     //   console.log(this.uid);
@@ -205,8 +206,8 @@ show:boolean;
     return -1;
   }
 
-  
-  
+
+
 
   getUserDetails(uid: any){
     this.userName = this.userService.getUserName(uid);

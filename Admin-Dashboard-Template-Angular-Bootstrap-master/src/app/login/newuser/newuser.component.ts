@@ -132,7 +132,7 @@ gend:string;
       }
     });
    }
-  
+
   public capture() {
     this.isShow=!this.isShow;
     //var uid = (document.getElementById("aadhar") as HTMLInputElement).value;
@@ -145,6 +145,7 @@ gend:string;
 
   addUser(aadhar: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){
     var user = new User();
+
     user.aadhar = aadhar;
     user.name = name;
     user.mobile = mobile;

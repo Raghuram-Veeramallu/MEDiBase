@@ -5,6 +5,8 @@ var N1qlQuery = require('couchbase').N1qlQuery;
 
 function RecordModel() { };
 
+//RecordModel.sampleAndroid = function()
+
 RecordModel.getAllDetails = function(patientUID, callback) {
     //var statement = "SELECT META(users).id, firstname, lastname, email " +
     //                "FROM `" + config.couchbase.bucket + "` AS users";

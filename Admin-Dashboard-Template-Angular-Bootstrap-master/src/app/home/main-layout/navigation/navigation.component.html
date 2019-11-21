@@ -51,11 +51,11 @@ aria-hidden="true">
         <br><br>
         <p>Year Wise Medical Records</p>
 
-        <div class="list-group "  *ngFor="let year of years | async">
+        <div class="list-group"  *ngFor="let year of years | async">
               
-            <a routerLink="records"  (click)="activeYear = year.key;getSelectedyear(year.key)" [class.active]="activeYear == year.key" >
-                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{year.key}}
-          </a>
+            <a (click)="activeYear = year;onSelectedYear(year)" [class.active]="activeYear == year" >
+                <mdb-icon fas icon="table" class="mr-3"></mdb-icon>{{year}}
+            </a>
                     
         </div>
        

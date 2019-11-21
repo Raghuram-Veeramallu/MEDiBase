@@ -25,9 +25,23 @@ export class RecordsService {
     //     })
     // }
 
-    // getRecordPerYear(patientUID: string, year: number){
-
-    // }
+    getRecordPerYear(patientUID: string, year: number){
+        var posting = {
+            patientUID: patientUID,
+            year: year
+        }
+        this.httpClient.post("http://localhost:3000/api/allYears/", posting).pipe(map(data => {
+            this.years = data;
+            //console.log(this.years);
+        })).subscribe((res) => {
+            console.log(res);
+            //this.years = res;
+            return this.years;
+            //this.years = this.years[0].all_years;
+        });
+        //console.log(this.years);
+        return this.years;
+    }
 
     getAllYears(patientUID: string){
         var posting = {

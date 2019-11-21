@@ -27,6 +27,7 @@ export class NewuserComponent implements OnInit {
   public image: any;
   private router:Router;
   private datad: string;
+  uid: string;
   isShow=false;
 gend:string;
   
@@ -59,10 +60,9 @@ gend:string;
     this.authenticationService.SignUp(this.institutes.email,"123456");
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-      console.log(user.uid);
-        // User is signed in.
+        console.log(user.uid);
       } else {
-        // No user is signed in.
+
       }
     });
     

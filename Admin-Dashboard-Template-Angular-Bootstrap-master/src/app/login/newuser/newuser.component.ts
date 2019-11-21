@@ -9,6 +9,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
  
 import { NgForm } from '@angular/forms';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-newuser',
@@ -28,8 +29,6 @@ export class NewuserComponent implements OnInit {
   private datad: string;
   isShow=false;
 gend:string;
-
-
   
   constructor(
     private userService: UserService,
@@ -58,6 +57,15 @@ gend:string;
     
     console.log(instaForm.value);
     this.authenticationService.SignUp(this.institutes.email,"123456");
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+      console.log(user.uid);
+        // User is signed in.
+      } else {
+        // No user is signed in.
+      }
+    });
+    
     this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
     }
   

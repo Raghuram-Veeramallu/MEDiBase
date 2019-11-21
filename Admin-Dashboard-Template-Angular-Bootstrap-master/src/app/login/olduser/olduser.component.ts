@@ -7,6 +7,7 @@ import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import{UidService} from "../../shared/services/uid.services";
+
 //import { HttpClient } from '@angular/common/http';
 //import { map } from 'rxjs/internal/operators/map';
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
@@ -53,6 +54,7 @@ export class OlduserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private uidService:UidService,
+   
     //private httpClient: HttpClient
     //public toastr: ToastrService,
     //private router: Router
@@ -119,6 +121,7 @@ export class OlduserComponent implements OnInit {
           console.log("Failure");
       }
       console.log(this.uid);
+     
       (document.getElementById('nameField') as HTMLButtonElement).innerHTML = this.uid;
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;

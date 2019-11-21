@@ -32,6 +32,8 @@ export class CardComponent implements OnInit {
   @Input() type: string;
   @Input() course: string;
   @Input() cday: string;
+  @Input() symptoms:string;
+  @Input() condition:string;
   constructor() { }
 
   ngOnInit() {

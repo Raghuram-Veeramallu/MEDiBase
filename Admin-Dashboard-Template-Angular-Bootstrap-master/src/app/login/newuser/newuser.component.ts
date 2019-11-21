@@ -61,12 +61,14 @@ gend:string;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
       console.log(user.uid);
-
+        //this.uid = user.uid;
+        sessionStorage.setItem("patientUID", user.uid);
         // User is signed in.
       } else {
 
       }
     });
+    console.log(sessionStorage.getItem("patientUID"));
     this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
 
     }

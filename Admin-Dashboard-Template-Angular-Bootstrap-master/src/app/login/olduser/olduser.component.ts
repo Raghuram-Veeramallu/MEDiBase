@@ -15,7 +15,7 @@ import{UidService} from "../../shared/services/uid.services";
 
 /// <reference path ="../typings/jquery/jquery.d.ts"/>
 
-var uID:any;
+var uID:string;
 
 @Component({
   selector: 'app-olduser',
@@ -41,9 +41,9 @@ export class OlduserComponent implements OnInit {
   public image: any;
 
   private datad: any;
-show:boolean;
-shows:boolean;
-@Input() name:string;
+  show:boolean;
+  shows:boolean;
+  @Input() name:string;
   uid: string;
   private userName: string;
   private router: Router;
@@ -59,6 +59,7 @@ shows:boolean;
   ) {
     this.userName = '';
     this.uidService.setUid("ap354@snu.edu.in");
+    sessionStorage.clear();
     //this.uid = '-1';
   }
   ngOnInit(){
@@ -108,19 +109,29 @@ shows:boolean;
       if(JSON.stringify(m).indexOf("success") > -1) {
         //this.uidService
           console.log(m.images[0].candidates[0].subject_id);
-          //this.name= m.images[0].candidates[0].subject_id;
+          this.uid = m.images[0].candidates[0].subject_id;
+          //uID = m.images[0].candidates[0].subject_id;
+          sessionStorage.setItem("loggedIn", uID);
+          this.name = uID;
           //this.uid = m.images[0].candidates[0].subject_id;
       }
       else{
           console.log("Failure");
       }
-      console.log(uID);
+      console.log(this.uid);
+      (document.getElementById('nameField') as HTMLButtonElement).innerHTML = this.uid;
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
-    });
+    }).then(function(_res, _err){
+      //console.log(sessionStorage.getItem("loggedIn"));
+      console.log(this.uid);
+      //this.afterwards();
+      sessionStorage.getItem("loggedIn");
 
-    console.log(uID);
-
+      // this.uidService.setUid(this.uid);
+      // console.log(this.uidService.getUid());
+    })
+    //this.uidService.setUid()
   }
 
   public capture() {

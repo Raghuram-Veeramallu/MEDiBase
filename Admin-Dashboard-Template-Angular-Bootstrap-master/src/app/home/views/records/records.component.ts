@@ -11,9 +11,12 @@ import { SelectedYearService } from 'src/app/shared/services/selectedYear.servic
   styleUrls: ['./records.component.scss']
 })
 export class RecordsComponent implements OnInit {
+
+  public records: any;
+
   years:Observable<any[]>;
 
-  records: any;
+  //records: any;
 
   cards = [{ title: 'First Card'}, { title: 'Second Card'}, { title: 'Third Card'}];
   
@@ -21,7 +24,6 @@ export class RecordsComponent implements OnInit {
      private recordService: RecordsService,
      private uidService: UidService,
      private selectedYrSrv: SelectedYearService,
-     //private cardComponent: CardComponent
   ) {
       this.getMedicalRecords();
       console.log(this.selectedYrSrv.getYear());
@@ -29,9 +31,6 @@ export class RecordsComponent implements OnInit {
 
   getMedicalRecords(){
     this.records = this.recordService.getRecordPerYear(this.uidService.getUid(), this.selectedYrSrv.getYear());
-    //this.records
-    //console.log(this.records[0].institute_name);
-    //this.cardComponent.cday=this.records.;
     console.log(this.records);
   }
 

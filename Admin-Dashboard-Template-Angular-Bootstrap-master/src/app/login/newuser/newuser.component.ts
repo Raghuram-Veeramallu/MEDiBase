@@ -9,8 +9,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service'
  
 import { NgForm } from '@angular/forms';
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-newuser',
@@ -35,12 +33,10 @@ gend:string;
   
   constructor(
     private userService: UserService,
-    private authenticationService:AuthenticationService,
-    public af:AngularFireAuth
+    private authenticationService:AuthenticationService
     
     //private http: HttpClient
   ) { 
-    
   }
   institutes = {
     patient: '',
@@ -61,21 +57,9 @@ gend:string;
     console.log("Entered new patient");
     
     console.log(instaForm.value);
-    
     this.authenticationService.SignUp(this.institutes.email,"123456");
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log(user.uid); // User is signed in.
-      } else {
-        // No user is signed in.
-      }
-    });
-    
-    //this.login();
     this.addUser(instaForm.value['phoneno'],instaForm.value["patient"],instaForm.value['aadhar'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
-
-    
-  }
+    }
   
   ngOnInit(){
   //  this.canvas.nativeElement.getContext("2d").drawImage("../../../assets/img/default\ dp.png",0,0,360,240);

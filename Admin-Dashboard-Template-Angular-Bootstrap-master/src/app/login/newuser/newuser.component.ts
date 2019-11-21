@@ -55,7 +55,7 @@ gend:string;
     }
   instituteLogins(instaForm: NgForm){
     console.log("Entered new patient");
-
+    
     console.log(instaForm.value);
     this.authenticationService.SignUp(this.institutes.email,"123456");
     firebase.auth().onAuthStateChanged(function(user) {
@@ -68,9 +68,10 @@ gend:string;
 
       }
     });
-    console.log(sessionStorage.getItem("patientUID"));
+    
+   console.log(sessionStorage.getItem("patientUID"));
     this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
-
+  
     }
 
   ngOnInit(){
@@ -139,6 +140,7 @@ gend:string;
 
   addUser(aadhar: string, name: string, mobile: string,blood:string,gender:string,height:string,weight:string,location:string,age:string,email:string){
     var user = new User();
+    
     user.aadhar = aadhar;
     user.name = name;
     user.mobile = mobile;

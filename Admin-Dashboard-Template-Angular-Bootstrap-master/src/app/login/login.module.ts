@@ -23,7 +23,7 @@ import{FormsModule} from '@angular/forms'
     ViewsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [NewuserComponent],
 })
 
 export class LoginModule { }

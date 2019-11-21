@@ -8,8 +8,9 @@ import { Component, OnInit} from '@angular/core';
 })
 
 export class AppComponent implements OnInit {
-  public hash: string;
 
+
+  public hash: string;
   public uid: string;
   public selectedYear: number;
   //public 

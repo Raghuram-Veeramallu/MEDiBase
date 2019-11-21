@@ -13,11 +13,14 @@ import * as firebase from 'firebase';
 import { UidService } from 'src/app/shared/services/uid.services';
 //import { AppComponent } from 'src/app/app.component';
 
+//var UserID: string;
+
 @Component({
   selector: 'app-newuser',
   templateUrl: './newuser.component.html',
   styleUrls: ['./newuser.component.scss']
 })
+
 export class NewuserComponent implements OnInit {
 
   @ViewChild("video", {static: false})
@@ -31,7 +34,7 @@ export class NewuserComponent implements OnInit {
   private datad: string;
   uid: string;
   isShow=false;
-gend:string;
+  gend:string;
 
   constructor(
     private router: Router,
@@ -42,6 +45,7 @@ gend:string;
 
     //private http: HttpClient
   ) {
+    sessionStorage.clear();
   }
   institutes = {
     patient: '',
@@ -60,20 +64,21 @@ gend:string;
     }
   instituteLogins(instaForm: NgForm){
     console.log("Entered new patient");
-
-    console.log(instaForm.value);
+    //console.log(instaForm.value);
     this.authenticationService.SignUp(this.institutes.email,"123456");
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-      console.log(user.uid);
+        //console.log(user.uid);
+        //UserID = user.uid;
         //this.uid = user.uid;
         //this.appComp.setUid();
-
+        //UidService.
         sessionStorage.setItem("patientUID", user.uid);
         // User is signed in.
       } else {}
     });
-    console.log(sessionStorage.getItem("patientUID"));
+    //console.log(UserID);
+    //console.log(sessionStorage.getItem("patientUID"));
     this.uidService.setUid(instaForm.value["email"]);
     this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
     this.sendToServer();
@@ -103,11 +108,10 @@ gend:string;
    }
    public leave(){
     this.router.navigateByUrl('http://localhost:4200/home/dashboard');
-    //routerLink="../../home/dashboard"
    }
 
    public sendToServer(){
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + sessionStorage.getItem("patientUID") + "\",\r\n    \"gallery_name\":\"temp\"\r\n}";
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + this.uidService.getUid() + "\",\r\n    \"gallery_name\":\"temp\"\r\n}";
     const settings = {
       "async": true,
       "crossDomain": true,

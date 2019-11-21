@@ -34,15 +34,15 @@ export class FacilityLoginComponent {
   
 
   instituteLogin(instForm: NgForm){
-    console.log("Going from facility to login");
+    //console.log("Going from facility to login");
     this.db.database.ref('/facility').orderByChild('email').equalTo(instForm.value['facilityId'])
-  .once('value')
-  .then(dataSnapshot => {
+    .once('value')
+    .then(dataSnapshot => {
     if(dataSnapshot.val()) {
        var dataObj = dataSnapshot.val();
        var password = dataObj[Object.keys(dataObj)[0]].password;
     
-    console.log(instForm.value['facilityPasskey']);
+    //console.log(instForm.value['facilityPasskey']);
     //console.log(this.verifyuser(instForm.value['facilityId']));
     if(password==instForm.value['facilityPasskey'])
    //if(instForm.value['facilityId']=="akhilesh@snu.edu.in" && instForm.value['facilityPasskey']=="akhilesh")

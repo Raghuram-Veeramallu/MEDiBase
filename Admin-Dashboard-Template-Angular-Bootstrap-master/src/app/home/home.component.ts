@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
         this.router.events.subscribe((route:any) => {
         this.currentUrl = route.url;
         this.specialPage = this.specialPages.indexOf(this.currentUrl) !== -1;
-        console.log(this.uidService.getUid());
+        //console.log(this.uidService.getUid());
       });
       
       //  "rTHDf5bLW0SjpMAndIAOxQEXxgB3"

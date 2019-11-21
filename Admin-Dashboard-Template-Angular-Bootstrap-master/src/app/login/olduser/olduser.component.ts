@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
+//import { UidService } from 'src/app/shared/services/uid.services';
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
 //import { toast } from 'angular2-materialize';
 //import { ToastrService } from 'ngx-toastr';
@@ -45,7 +46,7 @@ show:boolean;
 
   constructor(
     private userService: UserService,
-    
+    //private uidService: UidService
     //public toastr: ToastrService,
     //private router: Router
   ) { 
@@ -67,13 +68,9 @@ show:boolean;
     }
   }
 
-  public capture() {
-    this.show=true;
-    // this.router.navigateByUrl('/home/dashboard');
-    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 360, 240);
-    this.image = this.canvas.nativeElement.toDataURL("image/png");
 
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"ge\"\r\n}"
+  verifyFace(){
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp\"\r\n}"
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -81,8 +78,8 @@ show:boolean;
       "method": "POST",
       "headers": {
           "content-type": "application/json",
-          "app_id": "731a6b91",
-          "app_key": "dfcfe5f1dc7702d10842523844233761",
+          "app_id": "744ed0da",
+          "app_key": "291ab2350e2e88feca76ac97e6dfafa6",
           "cache-control": "no-cache"
       },
       "processData": false,
@@ -97,18 +94,61 @@ show:boolean;
       console.log(JSON.stringify(m).indexOf("success"));
       if(JSON.stringify(m).indexOf("success") > -1) {
           console.log(m.images[0].candidates[0].subject_id);
-          //this.document.getElementById("uidField").innerHTML = m.images[0].candidates[0].subject_id;
-          //$("uidField").val(12);
-          //toast('User Identfied. Name : ' +JSON.stringify(m.images[0].candidates[0].subject_id), 6000);
-          this.uid = m.images[0].candidates[0].subject_id;
+          //this.uid = m.images[0].candidates[0].subject_id;
       }
       else{
-          //Materialize.toast('User Not identified');
           console.log("Failure");
       }
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
-      (document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
+      //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
     });
+
+    //console.log(this.uid);
+
+  }
+
+  public capture() {
+    this.show=true;
+    // this.router.navigateByUrl('/home/dashboard');
+    this.canvas.nativeElement.getContext("2d").drawImage(this.video.nativeElement, 0, 0, 360, 240);
+    this.image = this.canvas.nativeElement.toDataURL("image/png");
+
+    // this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"ge\"\r\n}"
+    // var settings = {
+    //   "async": true,
+    //   "crossDomain": true,
+    //   "url": "https://api.kairos.com/recognize",
+    //   "method": "POST",
+    //   "headers": {
+    //       "content-type": "application/json",
+    //       "app_id": "744ed0da",
+    //       "app_key": "291ab2350e2e88feca76ac97e6dfafa6",
+    //       "cache-control": "no-cache"
+    //   },
+    //   "processData": false,
+    //   "data": this.datad
+     
+    // }
+
+    
+
+    // $.ajax(settings).done(function (response) {
+    //   var m = response;
+    //   console.log(JSON.stringify(m).indexOf("success"));
+    //   if(JSON.stringify(m).indexOf("success") > -1) {
+    //       console.log(m.images[0].candidates[0].subject_id);
+    //       //this.document.getElementById("uidField").innerHTML = m.images[0].candidates[0].subject_id;
+    //       //$("uidField").val(12);
+    //       //toast('User Identfied. Name : ' +JSON.stringify(m.images[0].candidates[0].subject_id), 6000);
+    //       this.uid = m.images[0].candidates[0].subject_id;
+    //   }
+    //   else{
+    //       //Materialize.toast('User Not identified');
+    //       console.log("Failure");
+    //   }
+    //   //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
+    //   (document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
+    // });
 
     //document.getElementById("uidField").innerHTML = 0;
     //document.getElementById("uidField") 

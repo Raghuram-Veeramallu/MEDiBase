@@ -13,8 +13,9 @@
             <canvas #canvas id="canvas" style="margin-left: 100px; " width="360" height="240"></canvas>
         </div>
         <div><button class="btn btn-primary"#marg id="snap"style='margin-left: 130px;' (click)="capture()">Snap Photo</button>
-        <button class="btn btn-primary" style='margin-left: 320px;'*ngIf="show"routerLink="../../home/dashboard">Verify and Login</button></div>
+        <button class="btn btn-primary" style='margin-left: 320px;'*ngIf="show" (click)="verifyFace()">Verify Face ID</button></div>
         <br><br>
+        <button class="btn btn-primary" style='margin-left: 380px;' routerLink="../../home/dashboard">Verify and Login</button>
         
     </div>
     <br><br>

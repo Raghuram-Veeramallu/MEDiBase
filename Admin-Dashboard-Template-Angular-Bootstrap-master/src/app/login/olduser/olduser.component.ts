@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
+import{UidService} from "../../shared/services/uid.services";
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
 //import { toast } from 'angular2-materialize';
 //import { ToastrService } from 'ngx-toastr';
@@ -45,11 +46,12 @@ show:boolean;
 
   constructor(
     private userService: UserService,
-    
+    private UidService:UidService
     //public toastr: ToastrService,
     //private router: Router
   ) { 
     this.userName = '';
+    this.UidService.setUid("ap354@snu.edu.in");
     //this.uid = '-1';
   }
   ngOnInit(){

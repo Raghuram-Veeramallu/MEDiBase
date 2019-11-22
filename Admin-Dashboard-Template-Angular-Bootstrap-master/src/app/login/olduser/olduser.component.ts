@@ -86,7 +86,7 @@ export class OlduserComponent implements OnInit {
 
 
   async sendToServer(){
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp\"\r\n}"
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"medibase\"\r\n}"
     var settings = {
       "async": true,
       "crossDomain": true,
@@ -123,7 +123,7 @@ export class OlduserComponent implements OnInit {
       console.log(sessionStorage.getItem("loggedIn"));
      // this.uidService.setUid(this.uid);
       //console.log(this.UidService.getUid());
-      (document.getElementById('nameField') as HTMLButtonElement).innerHTML = this.uid;
+      (document.getElementById('nameField') as HTMLButtonElement).innerHTML = String(sessionStorage.getItem("loggedIn"));
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
     }).then(function(_res, _err){
@@ -207,7 +207,7 @@ export class OlduserComponent implements OnInit {
   }
 
   public sendToApi(): any {
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp2\"\r\n}"
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"medibase\"\r\n}"
     var settings = {
       "async": true,
       "crossDomain": true,

@@ -40,7 +40,7 @@ export class OlduserComponent implements OnInit {
   public canvas: ElementRef;
   patientn:"";
   public image: any;
-
+chup:boolean;
   private datad: any;
   show:boolean;
   shows:boolean;
@@ -48,7 +48,7 @@ export class OlduserComponent implements OnInit {
   uid: string;
   private userName: string;
   private router: Router;
-
+err:boolean;
   isDisable: boolean;
 
   constructor(
@@ -65,6 +65,9 @@ export class OlduserComponent implements OnInit {
     //this.uid = '-1';
   }
   ngOnInit(){
+    }
+    force(){
+      this.uidService.setUid("ap354@snu.edu.in");
     }
   newUser(){
     this.router.navigateByUrl('../../login/newuser');
@@ -103,7 +106,7 @@ export class OlduserComponent implements OnInit {
 
     }
 
-   
+
   //this.name="Akhilesh";
   $.ajax(settings).done(function (response) {
       var m = response;
@@ -123,7 +126,7 @@ export class OlduserComponent implements OnInit {
       console.log(sessionStorage.getItem("loggedIn"));
      // this.uidService.setUid(this.uid);
       //console.log(this.UidService.getUid());
-      (document.getElementById('nameField') as HTMLButtonElement).innerHTML = String(sessionStorage.getItem("loggedIn"));
+
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
     }).then(function(_res, _err){
@@ -138,15 +141,19 @@ export class OlduserComponent implements OnInit {
     });
     this.db.database.ref('/users').orderByChild('email').equalTo(String(sessionStorage.getItem("loggedIn")))
     .once('value')
-    .then(dataSnapshot => {
-      if(dataSnapshot.val()) {
-        var dataObj = dataSnapshot.val();
-        console.log("I' herer");
-        this.patientn = dataObj[Object.keys(dataObj)[0]].name;
-        console
-        this.shows=true;
-        
-    }});
+  .then(dataSnapshot => {
+    if(dataSnapshot.val()) {
+       var dataObj = dataSnapshot.val();
+       console.log("I' herer");
+       this.patientn = dataObj[Object.keys(dataObj)[0]].name;
+       this.err=false;
+       this.chup=true;
+       this.shows=true;
+
+  }
+else{
+  (document.getElementById('nameField') as HTMLButtonElement).innerHTML = "Patient Not Found. Please Register";
+}});
 
     this.uidService.setUid(String(sessionStorage.getItem("loggedIn")));
     //console.log(x);

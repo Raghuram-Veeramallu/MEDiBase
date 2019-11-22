@@ -88,7 +88,7 @@ export class OlduserComponent implements OnInit {
   async sendToServer(){
     this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp\"\r\n}"
     var settings = {
-      "async": true,
+      "async": false,
       "crossDomain": true,
       "url": "https://api.kairos.com/recognize",
       "method": "POST",
@@ -105,13 +105,13 @@ export class OlduserComponent implements OnInit {
 
     this.shows=true;
 //this.name="Akhilesh";
-    $.ajax(settings).done(function (response) {
+  $.ajax(settings).done(function (response) {
       var m = response;
       console.log(JSON.stringify(m).indexOf("success"));
       if(JSON.stringify(m).indexOf("success") > -1) {
         //this.uidService
           console.log(m.images[0].candidates[0].subject_id);
-          this.uid = m.images[0].candidates[0].subject_id;
+          return m.images[0].candidates[0].subject_id;
           //uID = m.images[0].candidates[0].subject_id;
           sessionStorage.setItem("loggedIn", uID);
           this.name = uID;
@@ -121,20 +121,22 @@ export class OlduserComponent implements OnInit {
           console.log("Failure");
       }
       console.log(this.uid);
-      this.uidService.setUid(this.uid);
+     // this.uidService.setUid(this.uid);
       //console.log(this.UidService.getUid());
       (document.getElementById('nameField') as HTMLButtonElement).innerHTML = this.uid;
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
     }).then(function(_res, _err){
       //console.log(sessionStorage.getItem("loggedIn"));
-      console.log(this.uid);
+      //console.log(this.uid);
       //this.afterwards();
       sessionStorage.getItem("loggedIn");
 
       // this.uidService.setUid(this.uid);
       // console.log(this.uidService.getUid());
     })
+    //console.log(String(res));
+    //this.uidService.setUid(String(res));
     //this.uidService.setUid()
   }
 

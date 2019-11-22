@@ -66,6 +66,9 @@ chup:boolean;
   }
   ngOnInit(){
     }
+    force(){
+      this.uidService.setUid("ap354@snu.edu.in");
+    }
   newUser(){
     this.router.navigateByUrl('../../login/newuser');
   }

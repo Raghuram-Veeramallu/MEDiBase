@@ -67,7 +67,7 @@ err:boolean;
   ngOnInit(){
     }
     force(){
-      this.uidService.setUid("ap354@snu.edu.in");
+      this.uidService.setUid("hv829@snu.edu.in");
     }
   newUser(){
     this.router.navigateByUrl('../../login/newuser');
@@ -151,7 +151,8 @@ err:boolean;
        
   }
 else{
-  (document.getElementById('nameField') as HTMLButtonElement).innerHTML = "Patient Not Found. Please Register";
+  this.err=true;(
+    document.getElementById('nameField') as HTMLButtonElement).innerHTML = "Patient Not Found. Please Register";
 }});
 
     this.uidService.setUid(String(sessionStorage.getItem("loggedIn")));

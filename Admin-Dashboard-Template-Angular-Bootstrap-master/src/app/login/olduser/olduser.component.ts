@@ -48,7 +48,7 @@ chup:boolean;
   uid: string;
   private userName: string;
   private router: Router;
-
+err:boolean;
   isDisable: boolean;
 
   constructor(
@@ -145,6 +145,7 @@ chup:boolean;
        var dataObj = dataSnapshot.val();
        console.log("I' herer");
        this.patientn = dataObj[Object.keys(dataObj)[0]].name;
+       this.err=false;
        this.chup=true;
        this.shows=true;
        

@@ -40,7 +40,7 @@ export class OlduserComponent implements OnInit {
   public canvas: ElementRef;
 patientn:"";
   public image: any;
-
+chup:boolean;
   private datad: any;
   show:boolean;
   shows:boolean;
@@ -123,7 +123,7 @@ patientn:"";
       console.log(sessionStorage.getItem("loggedIn"));
      // this.uidService.setUid(this.uid);
       //console.log(this.UidService.getUid());
-      (document.getElementById('nameField') as HTMLButtonElement).innerHTML = String(sessionStorage.getItem("loggedIn"));
+      
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
     }).then(function(_res, _err){
@@ -142,9 +142,13 @@ patientn:"";
        var dataObj = dataSnapshot.val();
        console.log("I' herer");
        this.patientn = dataObj[Object.keys(dataObj)[0]].name;
+       this.chup=true;
        this.shows=true;
        
-  }});
+  }
+else{
+  (document.getElementById('nameField') as HTMLButtonElement).innerHTML = "Patient Not Found. Please Register";
+}});
 
     this.uidService.setUid(String(sessionStorage.getItem("loggedIn")));
     //console.log(x);

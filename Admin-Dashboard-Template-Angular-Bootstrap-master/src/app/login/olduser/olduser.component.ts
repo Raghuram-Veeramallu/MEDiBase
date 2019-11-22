@@ -38,7 +38,7 @@ export class OlduserComponent implements OnInit {
 
   @ViewChild("canvas", {static: false})
   public canvas: ElementRef;
-patientn:"";
+  patientn:"";
   public image: any;
 
   private datad: any;
@@ -131,20 +131,22 @@ patientn:"";
       //console.log(this.uid);
       //this.afterwards();
       console.log(sessionStorage.getItem("loggedIn"));
+      this.patientn = String(sessionStorage.getItem("loggedIn"));
 
       // this.uidService.setUid(this.uid);
       // console.log(this.uidService.getUid());
     });
     this.db.database.ref('/users').orderByChild('email').equalTo(String(sessionStorage.getItem("loggedIn")))
     .once('value')
-  .then(dataSnapshot => {
-    if(dataSnapshot.val()) {
-       var dataObj = dataSnapshot.val();
-       console.log("I' herer");
-       this.patientn = dataObj[Object.keys(dataObj)[0]].name;
-       this.shows=true;
-       
-  }});
+    .then(dataSnapshot => {
+      if(dataSnapshot.val()) {
+        var dataObj = dataSnapshot.val();
+        console.log("I' herer");
+        this.patientn = dataObj[Object.keys(dataObj)[0]].name;
+        console
+        this.shows=true;
+        
+    }});
 
     this.uidService.setUid(String(sessionStorage.getItem("loggedIn")));
     //console.log(x);

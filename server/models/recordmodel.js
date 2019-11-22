@@ -22,6 +22,18 @@ function RecordModel() { };
 // };
 
 
+//SELECT ARRAY yr.lessons for yr in medibase.years end as years from medibase use keys "ap354@snu.edu.in" where years is not null;
+RecordModel.getDataForPdf = function(patientUID, callback){
+  var statement = 'SELECT ARRAY yr.lessons for yr in ' + config.couchbase.bucket + '.years end as years from ' + config.couchbase.bucket + ' use keys "' + patientUID + '" where years is not null;';
+  var query = N1qlQuery.fromString(statement);
+  db.query(query, function(error, result) {
+      if(error) {
+          return callback(error, null);
+      }
+      callback(null, result);
+  });
+}
+
 
 RecordModel.getAllDetails = function(patientUID, callback) {
     //var statement = "SELECT META(users).id, firstname, lastname, email " +

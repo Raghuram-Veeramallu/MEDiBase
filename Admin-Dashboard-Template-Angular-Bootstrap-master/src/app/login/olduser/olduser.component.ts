@@ -7,7 +7,7 @@ import * as $ from 'jquery';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import{UidService} from "../../shared/services/uid.services";
-
+import { AngularFireDatabase,  } from "angularfire2/database";
 //import { HttpClient } from '@angular/common/http';
 //import { map } from 'rxjs/internal/operators/map';
 //import { ToastrService } from 'src/app/shared/services/toastr.service';
@@ -38,7 +38,7 @@ export class OlduserComponent implements OnInit {
 
   @ViewChild("canvas", {static: false})
   public canvas: ElementRef;
-
+patientn:"";
   public image: any;
 
   private datad: any;
@@ -54,13 +54,13 @@ export class OlduserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private uidService:UidService,
-   
+    private db: AngularFireDatabase
     //private httpClient: HttpClient
     //public toastr: ToastrService,
     //private router: Router
   ) {
     this.userName = '';
-    this.uidService.setUid("ap354@snu.edu.in");
+    //this.uidService.setUid("ap354@snu.edu.in");
     sessionStorage.clear();
     //this.uid = '-1';
   }
@@ -103,7 +103,7 @@ export class OlduserComponent implements OnInit {
 
     }
 
-    this.shows=true;
+   
   //this.name="Akhilesh";
   $.ajax(settings).done(function (response) {
       var m = response;
@@ -135,6 +135,16 @@ export class OlduserComponent implements OnInit {
       // this.uidService.setUid(this.uid);
       // console.log(this.uidService.getUid());
     });
+    this.db.database.ref('/users').orderByChild('email').equalTo(String(sessionStorage.getItem("loggedIn")))
+    .once('value')
+  .then(dataSnapshot => {
+    if(dataSnapshot.val()) {
+       var dataObj = dataSnapshot.val();
+       console.log("I' herer");
+       this.patientn = dataObj[Object.keys(dataObj)[0]].name;
+       this.shows=true;
+       
+  }});
 
     this.uidService.setUid(String(sessionStorage.getItem("loggedIn")));
     //console.log(x);

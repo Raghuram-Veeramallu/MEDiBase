@@ -104,23 +104,23 @@ export class OlduserComponent implements OnInit {
     }
 
     this.shows=true;
-//this.name="Akhilesh";
+  //this.name="Akhilesh";
   $.ajax(settings).done(function (response) {
       var m = response;
       console.log(JSON.stringify(m).indexOf("success"));
       if(JSON.stringify(m).indexOf("success") > -1) {
         //this.uidService
-          console.log(m.images[0].candidates[0].subject_id);
-          return m.images[0].candidates[0].subject_id;
-          //uID = m.images[0].candidates[0].subject_id;
-          sessionStorage.setItem("loggedIn", uID);
-          this.name = uID;
-          //this.uid = m.images[0].candidates[0].subject_id;
+        this.name = uID;
+        console.log(m.images[0].candidates[0].subject_id);
+        sessionStorage.setItem("loggedIn", m.images[0].candidates[0].subject_id);
+        //uID = m.images[0].candidates[0].subject_id;
+        //this.uid = m.images[0].candidates[0].subject_id;
       }
       else{
           console.log("Failure");
       }
-      console.log(this.uid);
+      //console.log(this.uid);
+      console.log(sessionStorage.getItem("loggedIn"));
      // this.uidService.setUid(this.uid);
       //console.log(this.UidService.getUid());
       (document.getElementById('nameField') as HTMLButtonElement).innerHTML = this.uid;
@@ -130,11 +130,14 @@ export class OlduserComponent implements OnInit {
       //console.log(sessionStorage.getItem("loggedIn"));
       //console.log(this.uid);
       //this.afterwards();
-      sessionStorage.getItem("loggedIn");
+      console.log(sessionStorage.getItem("loggedIn"));
 
       // this.uidService.setUid(this.uid);
       // console.log(this.uidService.getUid());
-    })
+    });
+
+    this.uidService.setUid(String(sessionStorage.getItem("loggedIn")));
+    //console.log(x);
     //console.log(String(res));
     //this.uidService.setUid(String(res));
     //this.uidService.setUid()
@@ -204,7 +207,7 @@ export class OlduserComponent implements OnInit {
   }
 
   public sendToApi(): any {
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp\"\r\n}"
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp2\"\r\n}"
     var settings = {
       "async": true,
       "crossDomain": true,

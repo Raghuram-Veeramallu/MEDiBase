@@ -111,7 +111,7 @@ export class NewuserComponent implements OnInit {
    }
 
    public sendToServer(){
-    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + this.uidService.getUid() + "\",\r\n    \"gallery_name\":\"temp\"\r\n}";
+    this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"subject_id\":\"" + this.uidService.getUid() + "\",\r\n    \"gallery_name\":\"temp2\"\r\n}";
     const settings = {
       "async": true,
       "crossDomain": true,

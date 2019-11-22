@@ -11,6 +11,15 @@ var appRouter = function(app) {
     });
   });
 
+  app.post("/api/forPdfGenerator", function(req, res) {
+    RecordModel.getDataForPdf(req.body.patientUID, function(error, result) {
+        if(error) {
+            return res.status(400).send(error);
+        }
+        res.send(result[0].years);
+    });
+  });
+
   app.post("/api/patientRecords", function(req, res) {
     if (!req.body.patientUID) {
       return res.status(400).send({"status": "error", "message": "PatientID is required for the documents"});

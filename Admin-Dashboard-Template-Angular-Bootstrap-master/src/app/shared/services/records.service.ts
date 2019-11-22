@@ -24,6 +24,13 @@ export class RecordsService {
     //         console.log(data as JSON);
     //     })
     // }
+    getallRecord(id:string){
+        var posting = {
+            patientUID: id
+        }
+        const url = `http://10.6.15.177:3000/api/forPdfGenerator/`;
+        return this.httpClient.post(url, posting);
+    }
 
     getRecordPerYear(id: string, yr: number){
         var posting = {

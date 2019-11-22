@@ -88,7 +88,7 @@ export class OlduserComponent implements OnInit {
   async sendToServer(){
     this.datad = "{\r\n    \"image\":\"" + this.image + "\",\r\n    \"gallery_name\":\"temp\"\r\n}"
     var settings = {
-      "async": false,
+      "async": true,
       "crossDomain": true,
       "url": "https://api.kairos.com/recognize",
       "method": "POST",

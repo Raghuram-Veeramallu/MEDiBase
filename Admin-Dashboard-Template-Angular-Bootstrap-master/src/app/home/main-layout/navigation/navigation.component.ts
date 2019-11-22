@@ -10,6 +10,10 @@ import * as jspdf from 'jspdf';
 import { RecordsService } from 'src/app/shared/services/records.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SelectedYearService } from 'src/app/shared/services/selectedYear.service';
+import { RecordRetrival } from 'src/app/shared/services/recordRetrival.service';
+import { Records } from 'src/app/shared/models/medicalRecords';
+import html2canvas from 'html2canvas';
+//import { CardComponent } from '../card/card.component';
 //import { VirtualTimeScheduler } from 'rxjs';
 //import { RecordsComponent } from '../../views/records/records.component';
 //import { RecordsComponent } from '../../views/records/records.component';
@@ -28,6 +32,7 @@ export class NavigationComponent implements OnInit {
 
   @ViewChild('sidenav', {static: true}) sidenav: ElementRef;
 
+  records: Records[];
   //years = ['1999', '2004', '2019'];
   clicked: boolean;
   resizedImage: Blob;
@@ -46,7 +51,10 @@ export class NavigationComponent implements OnInit {
     private recordService: RecordsService,
     private UidService:UidService,
     private db: AngularFireDatabase,
-    private selectedYrSrv: SelectedYearService
+    //private recordService: RecordsService,
+     private uidService: UidService,
+    private selectedYrSrv: SelectedYearService,
+    private recordRetrival: RecordRetrival
     //private recordsComponent: RecordsComponent,
   ) {
     this.db.database.ref('/users').orderByChild('email').equalTo(this.UidService.getUid())
@@ -119,11 +127,37 @@ export class NavigationComponent implements OnInit {
   }
 
   pdfGen(){
-    const pdf = new jspdf('p', 'mm', 'a4');
-       
+    //const pdf = new jspdf('p', 'mm', 'a4');
+    this.recordService.getallRecord(this.uidService.getUid() ).subscribe(result => {
+      //this.recordRetrival.setRecord(result as Records[]);
+      //this.records = result as [Records[]];
+    this.records=result as Records[];
+
+      //pdf.text(20,20,result as [Records[]]);
+      //console.log(this.records);
+    }, error => console.error(error));
+   const data = <HTMLCanvasElement>document.getElementById('print');
+		
+   
+		html2canvas(data).then((canvas) => {
+			// Few necessary setting options
+      const imgWidth = 20;
+			const pageHeight = 300;
+			const imgHeight = canvas.height * imgWidth / canvas.width;
+			const heightLeft = imgHeight;
+
+			const contentDataURL = canvas.toDataURL('image/png');
+			const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
+			const position = 0;
+			pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+			
+    // for(var rec of this.records)
+    // {
+    //   pdf.text(20,20,"Hello");
+    // }
         pdf.save('Akhilesh.pdf'); // Generated PDF
 		
-  }
+  });
 
   // insertImage() {
   //   let image = require('../../../../assets/img/male_avatar.png');
@@ -138,4 +172,4 @@ export class NavigationComponent implements OnInit {
   //   );
   // }
 
-}
+}}

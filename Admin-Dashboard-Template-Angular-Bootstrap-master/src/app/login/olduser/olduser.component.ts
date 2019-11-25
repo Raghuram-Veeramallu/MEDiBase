@@ -38,7 +38,7 @@ export class OlduserComponent implements OnInit {
 
   @ViewChild("canvas", {static: false})
   public canvas: ElementRef;
-patientn:"";
+  patientn:"";
   public image: any;
 chup:boolean;
   private datad: any;
@@ -106,7 +106,7 @@ err:boolean;
 
     }
 
-   
+
   //this.name="Akhilesh";
   $.ajax(settings).done(function (response) {
       var m = response;
@@ -126,7 +126,7 @@ err:boolean;
       console.log(sessionStorage.getItem("loggedIn"));
      // this.uidService.setUid(this.uid);
       //console.log(this.UidService.getUid());
-      
+
       //this.toastr.success('UID is ','Success');//+m.images[0].candidates[0].subject_id,'');
       //(document.getElementById('uidField') as HTMLButtonElement).innerHTML = this.uid;
     }).then(function(_res, _err){
@@ -134,6 +134,7 @@ err:boolean;
       //console.log(this.uid);
       //this.afterwards();
       console.log(sessionStorage.getItem("loggedIn"));
+      this.patientn = String(sessionStorage.getItem("loggedIn"));
 
       // this.uidService.setUid(this.uid);
       // console.log(this.uidService.getUid());
@@ -148,7 +149,7 @@ err:boolean;
        this.err=false;
        this.chup=true;
        this.shows=true;
-       
+
   }
 else{
   this.err=true;(

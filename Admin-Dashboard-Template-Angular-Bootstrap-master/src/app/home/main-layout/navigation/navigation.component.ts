@@ -10,7 +10,7 @@ import * as jspdf from 'jspdf';
 import { RecordsService } from 'src/app/shared/services/records.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SelectedYearService } from 'src/app/shared/services/selectedYear.service';
-import { RecordRetrival } from 'src/app/shared/services/recordRetrival.service';
+//import { RecordRetrival } from 'src/app/shared/services/recordRetrival.service';
 import { Records } from 'src/app/shared/models/medicalRecords';
 import html2canvas from 'html2canvas';
 //import { CardComponent } from '../card/card.component';
@@ -54,7 +54,7 @@ export class NavigationComponent implements OnInit {
     //private recordService: RecordsService,
      private uidService: UidService,
     private selectedYrSrv: SelectedYearService,
-    private recordRetrival: RecordRetrival
+    //private recordRetrival: RecordRetrival
     //private recordsComponent: RecordsComponent,
   ) {
     this.db.database.ref('/users').orderByChild('email').equalTo(this.UidService.getUid())
@@ -142,9 +142,9 @@ export class NavigationComponent implements OnInit {
 		html2canvas(data).then((canvas) => {
 			// Few necessary setting options
       const imgWidth = 20;
-			const pageHeight = 300;
+			//const pageHeight = 300;
 			const imgHeight = canvas.height * imgWidth / canvas.width;
-			const heightLeft = imgHeight;
+			//const heightLeft = imgHeight;
 
 			const contentDataURL = canvas.toDataURL('image/png');
 			const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF

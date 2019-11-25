@@ -134,7 +134,7 @@ chup:boolean;
       //console.log(this.uid);
       //this.afterwards();
       console.log(sessionStorage.getItem("loggedIn"));
-      this.patientn = String(sessionStorage.getItem("loggedIn"));
+      //this.patientn = String(sessionStorage.getItem("loggedIn"));
 
       // this.uidService.setUid(this.uid);
       // console.log(this.uidService.getUid());
@@ -148,7 +148,6 @@ chup:boolean;
        this.patientn = dataObj[Object.keys(dataObj)[0]].name;
        this.chup=true;
        this.shows=true;
-
   }
 else{
   (document.getElementById('nameField') as HTMLButtonElement).innerHTML = "Patient Not Found. Please Register";

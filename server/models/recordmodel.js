@@ -20,7 +20,17 @@ function RecordModel() { };
 //         callback(null, result);
 //     });
 // };
-
+RecordModel.addData = function(patientUID, year, data, callback){
+  //var statement = 'UPDATE ' + config.couchbase.bucket + ' use keys "' + patientUID + '" SET i.lessons = array_append(ifnull(i.lessons,[]), ' + data + ') for i in years end where any yr in medibase.years satisfies yr.year = ' + year +' end';
+  var statement = 'UPDATE ' + config.couchbase.bucket + ' use keys "'+ patientUID +'" SET i.lessons = array_append(ifnull(i.lessons,[]), '+data+') for i in years end where any yr in medibase.years satisfies yr.year = ' + year + ' end;';
+  var query = N1qlQuery.fromString(statement);
+  db.query(query, function(error, result) {
+      if(error) {
+          return callback(error, null);
+      }
+      callback(null, result);
+  });
+}
 
 //SELECT ARRAY yr.lessons for yr in medibase.years end as years from medibase use keys "ap354@snu.edu.in" where years is not null;
 RecordModel.getDataForPdf = function(patientUID, callback){

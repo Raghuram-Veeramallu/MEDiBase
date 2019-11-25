@@ -13,3 +13,10 @@ Node Backend
 Couchbase
 Firebase
 Kairos API
+
+#### Authentication Techniques:
+Kairos Face API
+
+#### Data Storage Solutions:
+Centralised Data - Firebase  > To store personal records and authentication information
+Distributed Data - Couchbase > To store confidential medical records

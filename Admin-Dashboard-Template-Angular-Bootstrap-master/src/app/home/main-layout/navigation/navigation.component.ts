@@ -43,9 +43,9 @@ export class NavigationComponent implements OnInit {
   patient:"";
   age:"";
   gender:""
- 
+
   // TODO: Need to fix the click effect of years
-  
+
   constructor(
     private router: Router,
     private recordService: RecordsService,
@@ -53,7 +53,7 @@ export class NavigationComponent implements OnInit {
     private db: AngularFireDatabase,
     //private recordService: RecordsService,
      private uidService: UidService,
-    private selectedYrSrv: SelectedYearService,
+    private selectedYrSrv: SelectedYearService
     //private recordRetrival: RecordRetrival
     //private recordsComponent: RecordsComponent,
   ) {
@@ -84,7 +84,7 @@ export class NavigationComponent implements OnInit {
     });
     //this.router.navigate(['records']);
   }
-    
+
   getSelectedyear(){
     return this.selectedYear;
   }
@@ -96,7 +96,7 @@ export class NavigationComponent implements OnInit {
     });
     //this.router.navigate(['../views/records']);
   }
-  
+
   getYears(){
     this.years = this.recordService.getAllYears(this.getPatientUID());
     console.log(this.years);
@@ -116,7 +116,7 @@ export class NavigationComponent implements OnInit {
   setClicked(val: boolean): void {
     this.clicked = val;
   }
- 
+
   navigateToPage(page: string){
     switch(page){
         case 'dashboard':{
@@ -137,8 +137,8 @@ export class NavigationComponent implements OnInit {
       //console.log(this.records);
     }, error => console.error(error));
    const data = <HTMLCanvasElement>document.getElementById('print');
-		
-   
+
+
 		html2canvas(data).then((canvas) => {
 			// Few necessary setting options
       const imgWidth = 20;
@@ -150,18 +150,18 @@ export class NavigationComponent implements OnInit {
 			const pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF
 			const position = 0;
 			pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
-			
+
     // for(var rec of this.records)
     // {
     //   pdf.text(20,20,"Hello");
     // }
         pdf.save('Akhilesh.pdf'); // Generated PDF
-		
+
   });
 
   // insertImage() {
   //   let image = require('../../../../assets/img/male_avatar.png');
-  
+
   //   this.ng2ImgMax.resizeImage(image, 400, 300).subscribe(
   //     result => {
   //       this.resizedImage = result;

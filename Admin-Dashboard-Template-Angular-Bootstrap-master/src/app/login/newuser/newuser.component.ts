@@ -60,7 +60,7 @@ export class NewuserComponent implements OnInit {
     email:''
   };
   youMethodName(model: any) {
-     this.gend=model;
+     this.institutes.gender=model;
     }
   instituteLogins(instaForm: NgForm){
     console.log("Entered new patient");
@@ -80,7 +80,7 @@ export class NewuserComponent implements OnInit {
     //console.log(UserID);
     //console.log(sessionStorage.getItem("patientUID"));
     this.uidService.setUid(instaForm.value["email"]);
-    this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.gend,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
+    this.addUser(instaForm.value['aadhar'],instaForm.value["patient"],instaForm.value['phoneno'],instaForm.value["blood"],this.institutes.gender,instaForm.value["height"],instaForm.value["weight"],instaForm.value["location"],instaForm.value["age"],instaForm.value["email"]);
     this.sendToServer();
     this.router.navigate(['/home/dashboard']);
   }

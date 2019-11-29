@@ -50,6 +50,7 @@ chup:boolean;
   private router: Router;
 
   isDisable: boolean;
+  err: boolean;
 
   constructor(
     private userService: UserService,
@@ -149,10 +150,7 @@ chup:boolean;
        this.chup=true;
        this.shows=true;
   }
-else{
-  this.err=true;(
-    document.getElementById('nameField') as HTMLButtonElement).innerHTML = "Patient Not Found. Please Register";
-}});
+});
 
     this.uidService.setUid(String(sessionStorage.getItem("loggedIn")));
     //console.log(x);
